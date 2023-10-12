@@ -1,4 +1,6 @@
 const express = require("express");
+const _ = require("lodash");
+const bcrypt = require("bcrypt");
 const router = express.Router();
 const { User, validateUser } = require("../models/user");
 
@@ -17,18 +19,17 @@ router.post("/", async (req, res) => {
     if (existingUser) return res.status(400).send("Email already exists");
   }
 
-  // Create a new user
-  const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    userType: req.body.userType,
-  });
+  const user = new User(
+    _.pick(req.body, ["name", "email", "password", "userType"])
+  );
 
-  // Save the user to the database
-  const result = await user.save();
+  if (req.body.userType === "organization") {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+  }
+  await user.save();
 
-  res.send(result);
+  res.send(_.pick(user, ["_id", "name", "email"]));
 });
 
 module.exports = router;
