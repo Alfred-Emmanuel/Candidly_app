@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema({
     enum: ["user", "organization"],
     required: true,
   },
+  emailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: Joi.string(),
   date: {
     type: Date,
     required: true,
@@ -41,14 +46,16 @@ function validateUser(user) {
   const schema = Joi.object({
     name: Joi.string().min(1).max(50).required(),
     userType: Joi.string().valid("user", "organization").required(),
-    email: Joi.string().min(5).max(255).email().when('userType', { 
-      is: 'organization', 
-      then: Joi.required() 
+    email: Joi.string().min(5).max(255).email().when("userType", {
+      is: "organization",
+      then: Joi.required(),
     }),
-    password: Joi.string().min(5).max(255).when('userType', { 
-      is: 'organization', 
-      then: Joi.required() 
+    password: Joi.string().min(5).max(255).when("userType", {
+      is: "organization",
+      then: Joi.required(),
     }),
+    emailVerified: Joi.boolean(),
+    verificationToken: Joi.string(),
   });
 
   return schema.validate(user);

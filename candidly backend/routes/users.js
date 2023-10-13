@@ -1,7 +1,9 @@
 const express = require("express");
 const _ = require("lodash");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = express.Router();
+const { sendVerificationEmail } = require("../utils/sendVerficationMail");
 const { User, validateUser } = require("../models/user");
 
 router.get("/", async (req, res) => {
@@ -26,6 +28,13 @@ router.post("/", async (req, res) => {
   if (req.body.userType === "organization") {
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
+
+    const verificationToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET , {
+      expiresIn: "24h",
+    });
+    user.verificationToken = verificationToken;
+
+    sendVerificationEmail(user.email, verificationToken);
   }
   await user.save();
 
