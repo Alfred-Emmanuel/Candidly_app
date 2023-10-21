@@ -1,0 +1,29 @@
+// "use server"
+
+import Link from "next/link";
+import RegistrationForm from "@/components/RegistrationForm";
+
+const page = () => {
+  return (
+    <div className="md:flex items-center md:pt-[3%] md:pb-[3%]">
+      <div className="md:w-[40%] border max-h-[90%] mx-auto md:py-5 md:px-5 shadow-md">
+        <h1 className="text-[1.35rem] font-semibold md:mb-10">
+          Welcome to Candidly
+        </h1>
+        <div>
+          <RegistrationForm />
+          <div className="text-center mt-5">
+            <h1>
+              Already a member?{" "}
+              <span className="text-blue-500">
+                <Link href="#">Log in</Link>
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default page;

@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     minlength: 0,
     maxlength: 255,
     trim: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -51,16 +52,11 @@ userSchema.methods.generateAuthToken = function () {
   return token;
 };
 
-// const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-//   expiresIn: "3d",
-// });
-
 const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
   const schema = Joi.object({
     name: Joi.string().min(1).max(50).required(),
-    // userType: Joi.string().valid("user", "organization").required(),
     email: Joi.string().min(5).max(255).email().required(),
     password: Joi.string().min(5).max(255).required(),
     emailVerified: Joi.boolean(),
@@ -69,10 +65,6 @@ function validateUser(user) {
 
   return schema.validate(user);
 }
-
-// module.exports.User = User;
-// module.exports.userSchema = userSchema;
-// module.exports.validateUser = validateUser;
 
 module.exports = {
   User,

@@ -18,10 +18,11 @@ router.post("/", async (req, res) => {
   try {
     // Validate the request body
     const { error } = validateUser(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error) return res.status(400).json({ error: error.details[0].message });
 
     const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) return res.status(400).send("Email already exists");
+    if (existingUser)
+      return res.status(400).json({ error: "Email already exists" });
 
     const user = new User(_.pick(req.body, ["name", "email", "password"]));
 
@@ -43,7 +44,6 @@ router.post("/", async (req, res) => {
 
     let responseMessage =
       "Registration successful.  Please check your email for verification instructions.";
-
 
     responseMessage = responseMessage;
     res.send({
