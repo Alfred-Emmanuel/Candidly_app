@@ -7,7 +7,7 @@ const users = require("./routes/users");
 const auth = require("./routes/auth");
 const verify = require("./routes/verify");
 const messages = require("./routes/messages");
-const conversations = require("./routes/conversations");
+// const conversations = require("./routes/conversations");
 
 if (!process.env.JWT_SECRET) {
   throw new Error("One or more required environment variables are not set.");
@@ -23,7 +23,7 @@ app.use("/api/users", users);
 app.use("/api/auth", auth);
 app.use("/verify", verify);
 app.use("/api/messages", messages);
-app.use("/api/conversations", conversations);
+// app.use("/api/conversations", conversations);
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/candidly")

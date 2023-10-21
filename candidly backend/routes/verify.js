@@ -22,10 +22,20 @@ router.get("/:token", async (req, res) => {
 
     // Mark user as verified
     user.emailVerified = true;
+    user.verificationToken = "";
 
     await user.save();
 
-    return res.status(200).json({ message: "Email verified successfully" });
+    const authToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "3d",
+    });
+    res.header("x-authentication",  authToken);
+
+    // Send a response with any additional data
+    res.status(200).json({
+      message: "Email verified successfully",
+      authToken: authToken,
+    });
   } catch (error) {
     return res.status(400).json({ error: "Invalid token" });
   }

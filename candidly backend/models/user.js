@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -14,23 +15,24 @@ const userSchema = new mongoose.Schema({
     minlength: 0,
     maxlength: 255,
     trim: true,
-    default: "",
   },
   password: {
     type: String,
     minlength: 0,
     maxlength: 1024,
     trim: true,
-    default: "",
   },
-  userType: {
-    type: String,
-    enum: ["user", "organization"],
-    required: true,
-  },
+  // userType: {
+  //   type: String,
+  //   enum: ["user", "organization"],
+  //   required: true,
+  //   default: "organization",
+  // },
   emailVerified: {
     type: Boolean,
-    default: false,
+    default: function () {
+      return this.userType === "user" ? null : false;
+    },
   },
   verificationToken: Joi.string(),
   date: {
@@ -40,20 +42,27 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign(
+    { _id: this._id /**userType: this.userType **/ },
+    process.env.JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+  return token;
+};
+
+// const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+//   expiresIn: "3d",
+// });
+
 const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
   const schema = Joi.object({
     name: Joi.string().min(1).max(50).required(),
-    userType: Joi.string().valid("user", "organization").required(),
-    email: Joi.string().min(5).max(255).email().when("userType", {
-      is: "organization",
-      then: Joi.required(),
-    }),
-    password: Joi.string().min(5).max(255).when("userType", {
-      is: "organization",
-      then: Joi.required(),
-    }),
+    // userType: Joi.string().valid("user", "organization").required(),
+    email: Joi.string().min(5).max(255).email().required(),
+    password: Joi.string().min(5).max(255).required(),
     emailVerified: Joi.boolean(),
     verificationToken: Joi.string(),
   });
@@ -61,6 +70,13 @@ function validateUser(user) {
   return schema.validate(user);
 }
 
-module.exports.User = User;
-module.exports.userSchema = userSchema;
-module.exports.validateUser = validateUser;
+// module.exports.User = User;
+// module.exports.userSchema = userSchema;
+// module.exports.validateUser = validateUser;
+
+module.exports = {
+  User,
+  userSchema,
+  validateUser,
+  generateAuthToken: userSchema.methods.generateAuthToken,
+};

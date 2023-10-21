@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
-const { userSchema } = require("./user");
-const conversationSchema = require("./conversation").conversationSchema;
 
 const messageSchema = new mongoose.Schema({
-  sender: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Assuming reference to the User collection
-    required: true,
-  },
+  // sender: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User", // Assuming reference to the User collection
+  //   required: true,
+  // },
   receiver: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User", // Assuming reference to the User collection
@@ -21,10 +19,6 @@ const messageSchema = new mongoose.Schema({
     maxlength: 1024,
     trim: true,
   },
-  //   parentMessage: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Message",
-  //   },
   image: {
     type: String,
   },
@@ -39,7 +33,7 @@ const Message = mongoose.model("Message", messageSchema);
 
 function validateMessage(message) {
   const schema = Joi.object({
-    senderId: Joi.objectId().required(),
+    // senderId: Joi.objectId().required(),
     receiverId: Joi.objectId().required(),
     content: Joi.string().min(0).max(1024).required(),
     // parentMessageId: Joi.objectId().required(),
