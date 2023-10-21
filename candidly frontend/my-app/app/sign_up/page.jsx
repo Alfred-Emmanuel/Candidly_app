@@ -15,8 +15,8 @@ const page = () => {
           <div className="text-center mt-5">
             <h1>
               Already a member?{" "}
-              <span className="text-blue-500">
-                <Link href="#">Log in</Link>
+              <span className="text-[#000080]">
+                <Link href="/login">Log in</Link>
               </span>
             </h1>
           </div>

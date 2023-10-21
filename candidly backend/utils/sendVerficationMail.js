@@ -15,7 +15,7 @@ function sendVerificationEmail(email, verificationToken) {
     from: process.env.EMAIL,
     to: email,
     subject: "Email Verification",
-    text: `Click the following link to verify your email: http://localhost:3000/verify/${verificationToken}`,
+    text: `Click the following link to verify your email: http://localhost:3001/verify/${verificationToken}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
