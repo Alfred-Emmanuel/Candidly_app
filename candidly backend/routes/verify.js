@@ -11,7 +11,7 @@ router.get("/:token", async (req, res) => {
     const user = await User.findById(decodedToken.id);
 
     if (!user) {
-      return res.status(400).json({ error: "Invalid token" });
+      return res.status(400).json({ error: "Invalid token or token has expired" });
     }
 
     // Check if user is already verified

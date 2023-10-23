@@ -23,17 +23,12 @@ const userSchema = new mongoose.Schema({
     maxlength: 1024,
     trim: true,
   },
-  // userType: {
-  //   type: String,
-  //   enum: ["user", "organization"],
-  //   required: true,
-  //   default: "organization",
-  // },
   emailVerified: {
     type: Boolean,
     default: false,
   },
   verificationToken: Joi.string(),
+  forgotPasswordToken: Joi.string(),
   date: {
     type: Date,
     required: true,
@@ -45,7 +40,7 @@ userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     { _id: this._id /**userType: this.userType **/ },
     process.env.JWT_SECRET,
-    { expiresIn: '24h' }
+    { expiresIn: "24h" }
   );
   return token;
 };
@@ -56,7 +51,8 @@ function validateUser(user) {
   const schema = Joi.object({
     name: Joi.string().min(1).max(50).required(),
     email: Joi.string().min(5).max(255).email().required(),
-    password: Joi.string().min(5).max(255).required(),
+    password: Joi.string().min(5).max(255).required().trim(),
+    forgotPasswordToken: Joi.string(),
     emailVerified: Joi.boolean(),
     verificationToken: Joi.string(),
   });
@@ -64,9 +60,16 @@ function validateUser(user) {
   return schema.validate(user);
 }
 
+function validatePassword(password) {
+  const schema = Joi.string().min(6).trim().required();
+
+  return schema.validate(password);
+}
+
 module.exports = {
   User,
   userSchema,
   validateUser,
   generateAuthToken: userSchema.methods.generateAuthToken,
+  validatePassword,
 };
