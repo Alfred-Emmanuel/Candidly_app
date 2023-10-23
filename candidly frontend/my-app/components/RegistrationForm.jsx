@@ -11,7 +11,6 @@ const RegistrationForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-//   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   const toggleShowPassword = () => {
@@ -46,7 +45,7 @@ const RegistrationForm = () => {
     <>
       <form className="md:px-[4%] md:pt-[3%]" id="myForm" action={clientAction}>
         <div className="">
-          <h1 className="md:mb-5">Organization name</h1>
+          <h1 className="md:mb-3">Organization name</h1>
           <input
             type="text"
             required
@@ -55,7 +54,7 @@ const RegistrationForm = () => {
           />
         </div>
         <div className=" mt-7">
-          <h1 className="md:mb-5">Organization email</h1>
+          <h1 className="md:mb-3">Organization email</h1>
           <input
             type="email"
             required
@@ -64,7 +63,7 @@ const RegistrationForm = () => {
           />
         </div>
         <div className="mt-7">
-          <h1 className="md:mb-5">Password</h1>
+          <h1 className="md:mb-3">Password</h1>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -85,7 +84,7 @@ const RegistrationForm = () => {
           </div>
         </div>
         <div className=" mt-7">
-          <h1 className="md:mb-5">Confirm Password</h1>
+          <h1 className="md:mb-3">Confirm Password</h1>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}

@@ -6,7 +6,12 @@ require("express-async-errors");
 module.exports = function () {
   winston.exceptions.handle(
     new winston.transports.Console({
-      format: winston.format.simple(),
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.printf(({ timestamp, level, message }) => {
+          return `${timestamp} ${level}: ${message}`;
+        })
+      ),
       level: "info",
     }),
     new winston.transports.File({ filename: "uncaughtExceptions.log" })

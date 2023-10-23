@@ -1,7 +1,7 @@
 import "../globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/SignUp_navbar";
-
+import Provider from "@/components/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +14,9 @@ export default function Layout({ children }) {
   return (
     <div className="">
       <Navbar />
-      <section className="">
+      <Provider>
         <main className="">{children}</main>
-      </section>
+      </Provider>
     </div>
   );
 }
