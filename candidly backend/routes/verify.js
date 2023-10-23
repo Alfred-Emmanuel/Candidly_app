@@ -6,7 +6,6 @@ const { User } = require("../models/user");
 router.get("/:token", async (req, res) => {
   const { token } = req.params;
 
-  try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await User.findById(decodedToken.id);
@@ -36,9 +35,6 @@ router.get("/:token", async (req, res) => {
       message: "Email verified successfully",
       authToken: authToken,
     });
-  } catch (error) {
-    return res.status(400).json({ error: "Invalid token" });
-  }
 });
 
 module.exports = router;

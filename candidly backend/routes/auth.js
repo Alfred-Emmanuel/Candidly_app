@@ -7,30 +7,27 @@ const router = express.Router();
 const { User } = require("../models/user");
 
 router.post("/", async (req, res) => {
-  try {
-    // Validate the request body
-    const { error } = validate(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+  // Validate the request body
+  const { error } = validate(req.body);
+  if (error) return res.status(400).json(error.details[0].message);
 
-    const existingUser = await User.findOne({ email: req.body.email });
+  const existingUser = await User.findOne({ email: req.body.email });
 
-    if (!existingUser) {
-      return res.status(400).send("Invalid Email or Password.");
-    } else {
-      const validPassword = await bcrypt.compare(
-        req.body.password,
-        existingUser.password
-      );
-      if (!validPassword) {
-        return res.status(400).send("Invalid Email or Password.");
-      }
-
-      const authToken = existingUser.generateAuthToken("5d");
-      res.header("x-authentication", authToken).send(authToken);
+  if (!existingUser) {
+    return res.status(400).json("Invalid Email or Password.");
+  } else {
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      existingUser.password
+    );
+    if (!validPassword) {
+      return res.status(400).json("Invalid Email or Password.");
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
+
+    const authToken = existingUser.generateAuthToken("5d");
+    res
+      .header("x-authentication", authToken)
+      .send(_.pick(existingUser, ["_id", "name", "email", "emailVerified"]));
   }
 });
 

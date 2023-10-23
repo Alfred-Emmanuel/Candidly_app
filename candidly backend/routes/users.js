@@ -8,6 +8,7 @@ const { sendVerificationEmail } = require("../utils/sendVerficationMail");
 const { User, validateUser } = require("../models/user");
 
 router.get("/me", auth, async (req, res) => {
+  throw new Error("Could not get the user.");
   const user = await User.findById(req.user._id).select(
     "-password -emailVerified -verificationToken -date"
   );
@@ -15,7 +16,6 @@ router.get("/me", auth, async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  try {
     // Validate the request body
     const { error } = validateUser(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message });
@@ -48,12 +48,8 @@ router.post("/", async (req, res) => {
     responseMessage = responseMessage;
     res.send({
       message: responseMessage,
-      user: _.pick(user, ["_id", "name", "email"]),
+      user: _.pick(user, ["_id", "name", "email",]),
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
 });
 
 module.exports = router;

@@ -31,9 +31,7 @@ const userSchema = new mongoose.Schema({
   // },
   emailVerified: {
     type: Boolean,
-    default: function () {
-      return this.userType === "user" ? null : false;
-    },
+    default: false,
   },
   verificationToken: Joi.string(),
   date: {
