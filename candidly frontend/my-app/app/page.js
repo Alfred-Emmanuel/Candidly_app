@@ -1,10 +1,15 @@
-import Link
- from "next/link";
+import Navbar from "@/components/Navbar";
+import Hero from "./pages_sections/landing_page_sections/hero";
 export default function Home() {
   return (
-    <main>
-      <h1>Home</h1>
-      <Link href="/sign_up"> Sign Up </Link>
-    </main>
+    <>
+      <Navbar />
+      <main className="md:mt-[5.75rem] mt-[3.8rem]">
+        <Hero />
+        <section>
+          
+        </section>
+      </main>
+    </>
   );
 }
