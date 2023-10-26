@@ -8,7 +8,7 @@ function Hero() {
         <div className="md:w-[40%] md:pt-[10%] ">
           <h1 className="text-[#241F1F] text-4xl q1 font-sans font-semibold  ">
             Empower Employees: <br /> Elevate the workplace- <br />{" "}
-            <span className="text-primaryColor">Anonymously</span>
+            <span className="text-primaryColor font-serif">Anonymously</span>
           </h1>
           <p className="text-textColor md:w-[65%] text-[1.1rem] md:mt-5">
             Secure way for employees to share their honest work experiences,

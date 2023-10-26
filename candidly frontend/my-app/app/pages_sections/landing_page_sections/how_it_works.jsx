@@ -4,14 +4,14 @@ function HowItWorks() {
   return (
     <section className="md:mt-28">
       <div className="md:px-28">
-        <h1 className="text-2xl">
+        <h1 className="text-2xl font-serif">
           HOW IT <br />{" "}
           <span className="text-primaryColor text-3xl">WORKS</span>
         </h1>
         <div className="mt-1">
-          <Image src="/Group 42.png" width={1200} height={100} />
+          <Image src="/Group 42.png" width={1050} height={100} />
         </div>
-        <div className="-mt-1 flex gap-[1%]">
+        <div className="-mt-1 flex gap-3">
           <div className="border bg-gray-50 rounded-tr-[5rem] rounded-bl-[5rem] px-6 w-[24%] py-10 text-center ">
             <Image
               src="/hat.png"
