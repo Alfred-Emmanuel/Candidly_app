@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const { sendVerificationEmail } = require("../utils/sendVerficationMail");
 const { sendResetPasswordEmail } = require("../utils/sendResetPasswordMail");
-const { User, validateUser, validatePassword } = require("../models/user");
+const { User, validateUser, validatePasswordReset } = require("../models/user");
 
 router.get("/me", auth, async (req, res) => {
   const user = await User.findById(req.user._id).select(
@@ -52,9 +52,9 @@ router.post("/forgot-password", async (req, res) => {
   const existingUser = await User.findOne({ email: req.body.email });
   if (!existingUser)
     return res.status(400).json({ error: "Email doesn't exist" });
-  if (existingUser.emailVerified === false)
+  else if (existingUser.emailVerified === false)
     return res.status(400).json({ error: "Email not verified" });
-  if (existingUser.forgotPasswordToken) {
+  else if (existingUser.forgotPasswordToken) {
     const decodedToken = jwt.decode(existingUser.forgotPasswordToken);
     if (Date.now() >= decodedToken.exp * 1000) {
       // The previous token has expired, allow the user to request a new one
@@ -64,34 +64,33 @@ router.post("/forgot-password", async (req, res) => {
         .status(400)
         .json({ error: "Password reset already requested" });
     }
+  } else {
+    const verificationToken = jwt.sign(
+      { email: existingUser.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "2h",
+      }
+    );
+
+    existingUser.forgotPasswordToken = verificationToken;
+    await existingUser.save();
+
+    sendResetPasswordEmail(existingUser.email, verificationToken);
+    res.json({
+      message: `Please check your email for password reset instructions.`,
+    });
   }
-
-  // const user = new User(_.pick(req.body, ["email"]));
-
-  const verificationToken = jwt.sign(
-    { email: existingUser.email },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "2h",
-    }
-  );
-
-  existingUser.forgotPasswordToken = verificationToken;
-  await existingUser.save();
-
-  // sendResetPasswordEmail(existingUser.email, verificationToken);
-  res.send({
-    message: `Please check your email for password reset instructions. ${existingUser.email} ${verificationToken}`,
-  });
 });
 
 router.put("/reset_password/:token", async (req, res) => {
   const { token } = req.params;
-  const { password } = req.body;
+  const { password, email } = req.body;
 
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findOne({ email: decodedToken.email });
+    const tokenEmail = decodedToken.email;
+    const user = await User.findOne({ email: tokenEmail });
 
     if (Date.now() >= decodedToken.exp * 1000) {
       return res.status(400).json({ error: "Token has expired" });
@@ -101,7 +100,15 @@ router.put("/reset_password/:token", async (req, res) => {
       return res.status(400).json({ error: "Invalid token or user not found" });
     }
 
-    const { error } = validatePassword(password);
+    if (email !== tokenEmail) {
+      return res.status(400).json({ error: "Email does not match email provided at the request of changing passwords!!" });
+    }
+
+    if (!user.forgotPasswordToken) {
+      return res.status(400).json({ error: "Token has already been used" });
+    }
+
+    const { error } = validatePasswordReset(password);
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }

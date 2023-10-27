@@ -60,10 +60,14 @@ function validateUser(user) {
   return schema.validate(user);
 }
 
-function validatePassword(password) {
-  const schema = Joi.string().min(6).trim().required();
+function validatePasswordReset(details) {
+  const schema = Joi.object({
+    email: Joi.string().min(5).max(255).email().required(),
+    password: Joi.string().min(5).max(255).required().trim(),
+  });
+  
 
-  return schema.validate(password);
+  return schema.validate(details);
 }
 
 module.exports = {
@@ -71,5 +75,5 @@ module.exports = {
   userSchema,
   validateUser,
   generateAuthToken: userSchema.methods.generateAuthToken,
-  validatePassword,
+  validatePasswordReset,
 };

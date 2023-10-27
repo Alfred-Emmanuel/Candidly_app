@@ -1,128 +1,12 @@
-{"level":"error","message":"Could not get the user. Could not get the user.","stack":"Error: Could not get the user.\n    at C:\\Users\\Alfred\\Candidly\\candidly backend\\routes\\users.js:11:9\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at auth (C:\\Users\\Alfred\\Candidly\\candidly backend\\middleware\\auth.js:13:5)\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at Route.dispatch (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:114:3)\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)"}
-{"level":"error","message":"Could not get the user. Could not get the user.","stack":"Error: Could not get the user.\n    at C:\\Users\\Alfred\\Candidly\\candidly backend\\routes\\users.js:11:9\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at auth (C:\\Users\\Alfred\\Candidly\\candidly backend\\middleware\\auth.js:13:5)\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at Route.dispatch (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:114:3)\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)"}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"error","message":"Could not get the user. Could not get the user.","stack":"Error: Could not get the user.\n    at C:\\Users\\Alfred\\Candidly\\candidly backend\\routes\\users.js:11:9\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at auth (C:\\Users\\Alfred\\Candidly\\candidly backend\\middleware\\auth.js:13:5)\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)\n    at Layer.handle [as handle_request] (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at Route.dispatch (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express\\lib\\router\\route.js:114:3)\n    at newFn (C:\\Users\\Alfred\\Candidly\\candidly backend\\node_modules\\express-async-errors\\index.js:16:20)"}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698062599 m21-20020a05600c4f5500b0040841e79715sm9397217wmq.27 - gsmtp"}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698063003 l7-20020a5d6687000000b00327bf4f2f14sm7580722wru.88 - gsmtp"}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698063406 n12-20020adfe78c000000b00326f0ca3566sm7702683wrm.50 - gsmtp"}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698063447 j20-20020a05600c1c1400b004065daba6casm14298041wms.46 - gsmtp"}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698063694 g38-20020a05600c4ca600b004078d71be9csm13912123wmp.13 - gsmtp"}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698348136 h10-20020a1709062dca00b009786c8249d6sm49584eji.175 - gsmtp"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698348443 w26-20020a50fa9a000000b0053e799314d7sm55917edr.73 - gsmtp"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698348866 u7-20020a816007000000b0059b50f126fbsm6230885ywb.114 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698064916 u25-20020a05600c00d900b004068495910csm13954135wmm.23 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
@@ -140,48 +24,11 @@
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698066630 q16-20020adfea10000000b00326dd5486dcsm7765451wrm.107 - gsmtp"}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Listening on port 3001..."}
-{"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698354490 185-20020a2503c2000000b00d814d8dfd69sm84453ybd.27 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
@@ -194,6 +41,9 @@
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698360388 r23-20020a170906365700b009aa292a2df2sm242123ejb.217 - gsmtp"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698360474 d7-20020a170906370700b009bf7a4d591bsm250850ejc.45 - gsmtp"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698360551 s4-20020a0de904000000b0058fc7604f45sm124329ywe.130 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
@@ -202,19 +52,20 @@
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698360659 c8-20020a056402100800b0053e625da9absm253490edu.41 - gsmtp"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698360694 rp28-20020a170906d97c00b009a9fbeb15f5sm254814ejb.46 - gsmtp"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698361039 ha11-20020a170906a88b00b0099bc80d5575sm248301ejb.200 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
-{"level":"error"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1698361113 a25-20020aa7cf19000000b00540f4715289sm255119edy.61 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698083677 c11-20020a170906340b00b009be23a040cfsm6877394ejb.40 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
-{"level":"info","message":"Email sent: 250 2.0.0 OK  1698084184 f13-20020a1c6a0d000000b003fe23b10fdfsm14627304wmc.36 - gsmtp"}
 {"level":"info","message":"Listening on port 3001..."}
 {"level":"info","message":"Connected to MongoDB..."}
 {"level":"info","message":"Listening on port 3001..."}
