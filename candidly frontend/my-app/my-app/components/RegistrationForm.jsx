@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const RegistrationForm = () => {
   const [formResult, setFormResult] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const closeModal = () => setIsModalOpen(false);
 
