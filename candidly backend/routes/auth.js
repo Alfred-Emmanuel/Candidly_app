@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const { User } = require("../models/user");
 
+// To login
 router.post("/", async (req, res) => {
   // Validate the request body
   const { error } = validate(req.body);
@@ -27,7 +28,7 @@ router.post("/", async (req, res) => {
     const authToken = existingUser.generateAuthToken("5d");
     res
       .header("x-authentication", authToken)
-      .send(_.pick(existingUser, ["_id", "name", "email", "emailVerified"]));
+      .send(_.pick(existingUser, ["_id", "name", "email", "emailVerified", "orgLink"]));
   }
 });
 

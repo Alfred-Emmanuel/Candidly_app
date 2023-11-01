@@ -1,5 +1,7 @@
 "use server";
+
 import { revalidatePath } from "next/cache";
+
 export async function submitRegistrationForm(formData) {
   revalidatePath("/sign_up");
   const name = formData.get("name")?.toString();
@@ -85,7 +87,7 @@ export async function submitNewPasswordForm(formData) {
   const formFields = {
     password,
   };
-  revalidatePath("/reset_password/[[...reset]]");
+  revalidatePath("/reset_password/[reset]");
 
   try {
     const response = await fetch(
@@ -102,6 +104,39 @@ export async function submitNewPasswordForm(formData) {
       // return { success: true };
       const data = await response.json();
       return data;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function sendMessage(formData) {
+  revalidatePath("/sign_up");
+  const header = formData.get("header")?.toString();
+  const content = formData.get("content")?.toString();
+  const receiverId = formData.get("receiverId")?.toString();
+
+  if (!header || !content || !receiverId) throw new Error("BLANK_FIELD");
+
+  const formFields = {
+    header,
+    content,
+    receiverId,
+  };
+
+  try {
+    const response = await fetch(`http://localhost:3001/api/messages/send-message/${header}`, {
+      method: "POST",
+      body: JSON.stringify(formFields),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      return { success: true };
     } else {
       const data = await response.json();
       return data;

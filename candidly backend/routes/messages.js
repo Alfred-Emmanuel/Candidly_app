@@ -10,10 +10,11 @@ router.get("/my_messages", auth, async (req, res) => {
   res.json(messages);
 });
 
-router.post("/send-message", async (req, res) => {
+router.post("/send-message/:token", async (req, res) => {
+  const { token } = req.params;
   let { receiverId, content } = req.body;
 
-  if (!receiverId || !content) {
+  if (!receiverId || !content ) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
@@ -29,6 +30,7 @@ router.post("/send-message", async (req, res) => {
     // sender: senderId,
     receiver: receiverId,
     content: content,
+    header: token
   });
 
   await newMessage.save();

@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
   verificationToken: Joi.string(),
+  orgLink: Joi.string(),
   forgotPasswordToken: Joi.string(),
   date: {
     type: Date,
@@ -54,20 +55,17 @@ function validateUser(user) {
     password: Joi.string().min(5).max(255).required().trim(),
     forgotPasswordToken: Joi.string(),
     emailVerified: Joi.boolean(),
+    orgLink: Joi.string().uri(),
     verificationToken: Joi.string(),
   });
 
   return schema.validate(user);
 }
 
-function validatePasswordReset(details) {
-  const schema = Joi.object({
-    email: Joi.string().min(5).max(255).email().required(),
-    password: Joi.string().min(5).max(255).required().trim(),
-  });
-  
+function validatePasswordReset(password) {
+  const schema = Joi.string().min(6).trim().required();
 
-  return schema.validate(details);
+  return schema.validate(password);
 }
 
 module.exports = {

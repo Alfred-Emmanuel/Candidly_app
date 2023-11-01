@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signIn } from "next-auth/react";
+import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
 
 export const LoginForm = () => {
@@ -58,9 +57,9 @@ export const LoginForm = () => {
             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
           >
             {showPassword ? (
-              <FontAwesomeIcon icon={faEyeSlash} />
+              <Eye />
             ) : (
-              <FontAwesomeIcon icon={faEye} />
+              <EyeOff />
             )}
           </span>
         </div>

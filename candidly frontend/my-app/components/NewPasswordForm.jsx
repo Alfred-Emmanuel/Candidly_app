@@ -3,8 +3,8 @@ import { useState } from "react";
 import { submitNewPasswordForm as submitForm } from "@/actions/actions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Eye, EyeOff } from "lucide-react";
+
 
 export const NewPasswordForm = ({ token }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,12 +64,12 @@ export const NewPasswordForm = ({ token }) => {
           <span
             onClick={toggleShowPassword}
             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-          >
-            {showPassword ? (
-              <FontAwesomeIcon icon={faEyeSlash} />
-            ) : (
-              <FontAwesomeIcon icon={faEye} />
-            )}
+          > 
+          {showPassword ? (
+            <Eye />
+          ) : (
+            <EyeOff />
+          )}
           </span>
         </div>
       </div>
@@ -86,10 +86,10 @@ export const NewPasswordForm = ({ token }) => {
             onClick={toggleShowPassword}
             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
           >
-            {showPassword ? (
-              <FontAwesomeIcon icon={faEyeSlash} />
+             {showPassword ? (
+              <Eye />
             ) : (
-              <FontAwesomeIcon icon={faEye} />
+              <EyeOff />
             )}
           </span>
         </div>
@@ -98,7 +98,7 @@ export const NewPasswordForm = ({ token }) => {
         <input type="hidden" name="token" value={token.reset[0]} />
       </div>
       <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
-        Submit Email
+        Submit New Password
       </button>
     </form>
   );

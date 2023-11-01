@@ -3,8 +3,8 @@ import { submitRegistrationForm as submitForm } from "@/actions/actions";
 import VerifyMail from "@/components/VerifyMail";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Eye, EyeOff } from "lucide-react";
+
 
 const RegistrationForm = () => {
   const [formResult, setFormResult] = useState(null);
@@ -75,11 +75,11 @@ const RegistrationForm = () => {
               onClick={toggleShowPassword}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
             >
-              {showPassword ? (
-                <FontAwesomeIcon icon={faEyeSlash} />
-              ) : (
-                <FontAwesomeIcon icon={faEye} />
-              )}
+             {showPassword ? (
+              <Eye />
+            ) : (
+              <EyeOff />
+            )}
             </span>
           </div>
         </div>
@@ -96,11 +96,11 @@ const RegistrationForm = () => {
               onClick={toggleShowPassword}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
             >
-              {showPassword ? (
-                <FontAwesomeIcon icon={faEyeSlash} />
-              ) : (
-                <FontAwesomeIcon icon={faEye} />
-              )}
+             {showPassword ? (
+              <Eye />
+            ) : (
+              <EyeOff />
+            )}
             </span>
           </div>
         </div>

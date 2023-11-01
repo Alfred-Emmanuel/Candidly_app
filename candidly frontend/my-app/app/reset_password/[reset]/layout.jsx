@@ -1,22 +1,21 @@
-import "../globals.css";
+// import "@/globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/SignUp_navbar";
-import Provider from "@/components/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Candidly Sign Up",
-  description: "Register for a new account on Candidly.",
+  title: "Reset Password",
+//   description: "Register for a new account on Candidly.",
 };
 
 export default function Layout({ children }) {
   return (
     <div className="">
       <Navbar />
-      <Provider>
-        <main className="pt-24 border">{children}</main>
-      </Provider>
+      <section className="">
+        <main className="">{children}</main>
+      </section>
     </div>
   );
 }

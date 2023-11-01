@@ -6,7 +6,10 @@ function page() {
   const { data: session } = useSession();
 
   console.log(session);
-  return <div>page</div>;
+  return (
+  <div className=""><h1>Welcime</h1></div>
+  
+  );
 }
 
 export default page;
