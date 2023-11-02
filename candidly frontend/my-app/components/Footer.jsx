@@ -3,8 +3,8 @@ import { Facebook, Instagram, Twitter } from 'lucide-react'
 
 function Footer() {
   return (
-      <div className='bg-primaryColor text-white py-10 px-5 md:py-20 md:px-24 mt-20 '>
-        <div className='md:flex gap-[15%]'>
+      <div className='bg-primaryColor text-white py-10 px-5 md:py-20 md:px-16 lg:px-24 mt-20 '>
+        <div className='md:flex md:gap-[5%] lg:gap-[15%]'>
           <div className='mb-10 md:mb-0'>
             <h1 className='mb-2 md:mb-3 text-[1.3rem] font-semibold'>Candidly</h1>
             <p className='text-[1rem] w-[60%] tracking-wider md:tracking-normal md:text-[0.95rem] md:w-[80%] '>

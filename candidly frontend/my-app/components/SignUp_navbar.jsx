@@ -4,7 +4,7 @@ import { ChevronLeftCircle } from "lucide-react";
 const SignUp_navbar = () => {
   return (
     <nav
-      className="fixed w-full md:flex items-center md:pl-16 md:h-20 md:border md:backdrop-blur-lg md:border-b"
+      className="fixed w-full flex items-center pl-5 md:pl-16 h-16 md:h-20 border backdrop-blur-lg md:border-b"
     >
       <Link href="/" className="flex gap-2">
         <span>

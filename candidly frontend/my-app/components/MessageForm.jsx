@@ -29,9 +29,9 @@ const MessageForm = (userId) => {
   }
   return (
     <>
-      <form className=" px-5 pt-10 md:px-0 md:w-[50%] md:pt-[3%]" id="myForm" action={clientAction}>
+      <form className=" px-5 pt-10 md:px-20 lg:px-0 lg:w-[50%] md:pt-[3%]" id="myForm" action={clientAction}>
         <div className="">
-          <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1rem] ">Heading <span className="text-red-500">*</span></h1>
+          <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1.2rem] lg:text-[1rem] ">Heading <span className="text-red-500">*</span></h1>
           <input
             type="text"
             required
@@ -39,8 +39,8 @@ const MessageForm = (userId) => {
             name="header"
           />
         </div>
-        <div className="mt-4">
-          <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1rem]">Type your anonymous message <span className="text-red-500">*</span></h1>
+        <div className="mt-4 md:mt-10 lg:mt-4">
+          <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1.2rem lg:text-[1rem]">Type your anonymous message <span className="text-red-500">*</span></h1>
           <textarea
             required
             className="w-full h-32 bg-gray-50 border border-black px-5 py-3 rounded-lg "
