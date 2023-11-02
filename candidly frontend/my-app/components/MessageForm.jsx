@@ -35,7 +35,7 @@ const MessageForm = (userId) => {
           <input
             type="text"
             required
-            className="w-full h-12 bg-gray-100 px-5 rounded-lg "
+            className="w-full h-12 bg-gray-50 border border-black  px-5 rounded-lg "
             name="header"
           />
         </div>
@@ -43,7 +43,7 @@ const MessageForm = (userId) => {
           <h1 className="md:mb-3">Type your anonymous message <span className="text-red-500">*</span></h1>
           <textarea
             required
-            className="w-full h-32 bg-gray-100 px-5 py-3 rounded-lg "
+            className="w-full h-32 bg-gray-50 border border-black px-5 py-3 rounded-lg "
             name="content"
           />
         </div>
@@ -51,7 +51,7 @@ const MessageForm = (userId) => {
             <input type="hidden" name="receiverId" value={userId.userId.org_message} />
         </div>
         <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
-          Sign Up
+          Send Message
         </button>
       </form>
     </>
