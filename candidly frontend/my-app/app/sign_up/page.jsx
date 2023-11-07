@@ -5,9 +5,9 @@ import RegistrationForm from "@/components/RegistrationForm";
 
 const page = () => {
   return (
-    <div className="md:flex items-center md:pt-[3%] md:pb-[3%]">
-      <div className="md:w-[35%] border border-t-[#000080] border-t-8 rounded-lg max-h-[90%] mx-auto md:py-5 md:px-5 shadow-md">
-        <h1 className="text-[1.35rem] font-semibold md:mb-10">
+    <div className="flex justify-center items-center md:h-screen lg:mt-[5%] lg:mb-[5%] lg:h-fit-content md:pt-[3%] pb-[3%]">
+      <div className="md:w-[60%] lg:w-[35%] border border-t-[#000080] border-t-8 rounded-lg py-5 px-5 shadow-md">
+        <h1 className="text-[1.1rem] md:text-[1.35rem] font-semibold md:mb-10 mb-5 pt-5 md:pt-0 ">
           Welcome to Candidly
         </h1>
         <div>

@@ -14,7 +14,7 @@ export default function Layout({ children }) {
     <div className="">
       <Navbar />
       <section className="">
-        <main className="pt-16">{children}</main>
+        <main className="pt-24 px-10 md:px-0 md:pt-16">{children}</main>
       </section>
     </div>
   );

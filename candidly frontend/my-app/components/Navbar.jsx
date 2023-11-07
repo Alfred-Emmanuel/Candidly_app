@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,9 +87,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="lg:hidden flex px-5 justify-between h-16 items-center backdrop-blur-0">
+      <div className="lg:hidden flex px-5 justify-between h-16 items-center backdrop-blur-lg">
         <Link href="/" className="text-2xl font-bold">
-          get<span className="text-primaryColor">linked</span>
+          Candid<span className="text-primaryColor">ly</span>
         </Link>
 
         <div className="lg:hidden">
@@ -97,23 +98,9 @@ const Navbar = () => {
             className="block text-3xl text-primaryColor"
           >
             {isMobileNavOpen ? (
-              <Image
-                src="/menu-close.png"
-                width={15}
-                height={15}
-                alt=""
-                className="transition-transform transform rotate-0"
-                style={{ animation: "openToClose 0.5s ease-in-out forwards" }}
-              />
+             <X />
             ) : (
-              <Image
-                src="/menu-open.png"
-                width={20}
-                height={20}
-                alt=""
-                className="transition-transform transform rotate-0"
-                style={{ animation: "closeToOpen 0.5s ease-in-out forwards" }}
-              />
+              <Menu />
             )}
           </button>
         </div>
@@ -122,19 +109,17 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       {isMobileNavOpen && (
         <div
-          className={`lg:hidden h-screen bg-dark-mode-background-color overflow-y-hidden relative z-50 py-4 px-8 w-full animate-${
-            isMobileNavOpen ? "slideIn" : "slideOut"
-          } `}
+          className={`lg:hidden h-screen bg-gray-500 text-white overflow-y-hidden relative z-50 py-4 px-8 w-full`}
         >
           <ul className=" md:mb-14">
             <li className="mb-4 md:text-[1.3rem]">
               <Link href="#timeline" onClick={closeMobileNav}>
-                Timeline
+                About
               </Link>
             </li>
             <li className="mb-4 md:text-[1.3rem]">
               <Link href="/" onClick={closeMobileNav}>
-                Overview
+                Features
               </Link>
             </li>
             <li className="mb-4 md:text-[1.3rem]">
@@ -147,13 +132,23 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
+            <li className="mb-10 mt-6">
+              <Link
+                href="/login"
+                className="lg:hidden  bg-primaryColor px-5 py-3 md:px-12 md:py-4 rounded-full "
+              >
+                Login
+              </Link>
+            </li>
+            <li className=" ">
+              <Link
+                href="/sign_up"
+                className="lg:hidden bg-primaryColor px-5 py-3 md:px-12 md:py-4 rounded-full "
+              >
+                Sign Up
+              </Link>
+            </li>
           </ul>
-          <Link
-            href="/register"
-            className="lg:hidden bg-gradient-to-r from-pink via-primaryColor to-secondary-color px-6 py-2 md:px-12 md:py-4 rounded-lg "
-          >
-            Register
-          </Link>
         </div>
       )}
     </nav>

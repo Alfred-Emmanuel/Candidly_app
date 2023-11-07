@@ -3,25 +3,25 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section id="hero-section" className="">
-      <div className="md:flex md:px-32 gap-[5%] justify-between h-[80vh]">
+    <section id="hero-section" className="pt-24 md:pt-0 px-5 md:px-0">
+      <div className="md:flex md:px-32 gap-[5%] justify-between md:h-[80vh]">
         <div className="md:w-[40%] md:pt-[10%] ">
-          <h1 className="text-[#241F1F] text-4xl q1 font-sans font-semibold  ">
+          <h1 className="text-[#241F1F] text-[1.6rem] md:text-4xl q1 font-sans font-semibold  ">
             Empower Employees: <br /> Elevate the workplace- <br />{" "}
             <span className="text-primaryColor font-serif">Anonymously</span>
           </h1>
-          <p className="text-textColor md:w-[65%] text-[1.1rem] md:mt-5">
+          <p className="text-textColor w-[65%] mt-3 lg:text-[1.1rem] md:mt-5">
             Secure way for employees to share their honest work experiences,
             insights, and feedback without revealing their identities
           </p>
           <Link
-            className="bg-primaryColor md:mt-10 text-white w-32 h-10 flex items-center justify-center rounded-full font-bold "
+            className="bg-primaryColor md:mt-10 mt-5 mb-10 md:mb-0 text-white w-28 h-12 md:w-32 md:h-10 flex items-center justify-center rounded-full font-bold "
             href="/sign_up"
           >
             Sign up now
           </Link>
         </div>
-        <div className="relative md:w-[55%] md:mt-10 md:flex items-center gap-[5%]">
+        <div className="hidden relative md:w-[55%] md:mt-10 md:flex items-center gap-[5%]">
           <div className="absolute -top-4 left-[20%] flex gap-1 items-center rounded-full bg-white px-2 py-2 md:w-[35%] shadow-md">
             <div className="rounded-circle bg-primaryColor text-white rounded-full px-2 flex items-center justify-center ">
               {/* <HelpCircle /> */}
@@ -31,7 +31,7 @@ function Hero() {
               Struggling with speaking up at work?
             </p>
           </div>
-          <div className="absolute bg-white bottom-0 -left-[30%] rounded-lg py-4 shadow-md w-[35%]">
+          <div className="absolute bg-white bottom-0  -left-[30%] rounded-lg py-4 shadow-md w-[35%]">
             <div className="flex justify-between items-center border-b-2 border-textColor px-4 pb-2">
               <p className="font-semibold">MANAGER REPORT</p>
               <div className="rounded-circle bg-primaryColor text-white rounded-full px-2 flex items-center justify-center ">
@@ -55,16 +55,16 @@ function Hero() {
             </div>
           </div>
           <div>
-            <Image src="/two-women.png" width={300} height={300} />
+            <Image src="/two-women.png" width={280} height={300} />
           </div>
           <div>
             <Image
               src="/white-and-muslim-woman.png"
-              width={180}
-              height={180}
+              width={165}
+              height={165}
               className="mb-5"
             />
-            <Image src="/women-talking.png" width={180} height={180} />
+            <Image src="/women-talking.png" width={165} height={165} />
           </div>
         </div>
       </div>
