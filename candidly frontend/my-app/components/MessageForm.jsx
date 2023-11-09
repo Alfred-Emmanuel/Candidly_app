@@ -1,7 +1,7 @@
 "use client";
 import { sendMessage as submitForm } from "@/actions/actions";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect } from "react";
 
 
 const MessageForm = (userId) => {
@@ -10,10 +10,10 @@ const MessageForm = (userId) => {
     try {
       const result = await submitForm(formData);
       console.log(result);
-    //   console.log(userId.userId.org_message);
 
       if (result?.error) {
         toast.error(result.error);
+        console.log(result)
         return;
       } else if (result?.success) {
         toast.success("Message sent successfully");
@@ -27,9 +27,17 @@ const MessageForm = (userId) => {
       }
     }
   }
+
+  
   return (
     <>
-      <form className=" px-5 pt-10 md:px-20 lg:px-0 lg:w-[50%] md:pt-[3%]" id="myForm" action={clientAction}>
+      <form 
+        className=" px-5 pt-10 md:px-20 lg:px-0 lg:w-[50%] md:pt-[3%]"
+        id="myForm" 
+        action={clientAction}
+        // encType="multipart/form-data" 
+        // method="post"
+        >
         <div className="">
           <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1.2rem] lg:text-[1rem] ">Heading <span className="text-red-500">*</span></h1>
           <input
@@ -37,6 +45,14 @@ const MessageForm = (userId) => {
             required
             className="w-full h-12 bg-gray-50 border border-black  px-5 rounded-lg "
             name="header"
+          />
+        </div>
+        <div className="">
+          <input
+            type="file"
+            // required
+            className="w-full h-12 bg-gray-50 border border-black  px-5 rounded-lg "
+            name="imageFile"
           />
         </div>
         <div className="mt-4 md:mt-10 lg:mt-4">

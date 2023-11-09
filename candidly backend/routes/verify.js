@@ -22,7 +22,7 @@ router.get("/:token", async (req, res) => {
     // Mark user as verified
     user.emailVerified = true;
     user.verificationToken = "";
-    user.orgLink = `localhost:3000/your_link/${user._id}`
+    user.orgLink = `localhost:3000/send_message/${user._id}`
 
     await user.save();
 

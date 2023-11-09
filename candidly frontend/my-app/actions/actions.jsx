@@ -118,6 +118,8 @@ export async function sendMessage(formData) {
   const header = formData.get("header")?.toString();
   const content = formData.get("content")?.toString();
   const receiverId = formData.get("receiverId")?.toString();
+  const imageFile = formData.set('imageFile', formData.imageFile);
+  
 
   if (!header || !content || !receiverId) throw new Error("BLANK_FIELD");
 
@@ -125,6 +127,7 @@ export async function sendMessage(formData) {
     header,
     content,
     receiverId,
+    imageFile: imageFile ? imageFile.toString() : "",
   };
 
   try {

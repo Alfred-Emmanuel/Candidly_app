@@ -21,9 +21,11 @@ const messageSchema = new mongoose.Schema({
     maxlength: 10024,
     trim: true,
   },
-  image: {
-    type: String,
-  },
+  images: [
+    {
+      type: String,
+    },
+  ],
   timestamp: {
     type: Date,
     required: true,
@@ -40,7 +42,7 @@ function validateMessage(message) {
     content: Joi.string().min(1).max(10024).required(),
     header: Joi.string().min(1).max(1024).required(),
     // parentMessageId: Joi.objectId().required(),
-    image: Joi.string().uri(),
+    images: Joi.array().items(Joi.string().uri()),
   });
 
   return schema.validate(message);
