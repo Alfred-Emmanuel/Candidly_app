@@ -13,7 +13,6 @@ function page() {
   if (session) {
     console.log(session.user.user.messages);
     messages = session.user.user.messages
-    // console.log(session.messagesCount);
   }
 
   // const Table = () => {
