@@ -23,9 +23,7 @@ module.exports = function () {
 
   winston.add(new winston.transports.File({ filename: "logfile.log" }));
 
-  const mongoClient = new MongoClient("mongodb://127.0.0.1:27017/candidly", {
-    useUnifiedTopology: true, // Add this option
-  });
+  const mongoClient = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
   mongoClient.connect();
 
