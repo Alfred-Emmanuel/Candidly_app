@@ -9,19 +9,19 @@ require ("./startup/routes")(app);
 require("./startup/db")();
 require("./startup/config")();
 require("./startup/validation")();
-// require("./startup/prod")(app);
+require("./startup/prod")(app);
 
 
-app.get("/", function (req, res) {
-  res.sendFile(
-    path.join(__dirname, "../candidly_frontend/my-app/build/index.html"),
-    function (err) {
-      if (err) {
-        res.status(500).send(err)
-      }
-    }
-  );
-});
+// app.get("/", function (req, res) {
+//   res.sendFile(
+//     path.join(__dirname, "../candidly_frontend/my-app/build/index.html"),
+//     function (err) {
+//       if (err) {
+//         res.status(500).send(err)
+//       }
+//     }
+//   );
+// });
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
