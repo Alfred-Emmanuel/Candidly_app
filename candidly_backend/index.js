@@ -9,6 +9,17 @@ require("./startup/db")();
 require("./startup/config")();
 require("./startup/validation")();
 
+app.get("/", function (req, res) {
+  res.sendFile(
+    path.join(__dirname, "../candidly_frontend/my-app/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    }
+  );
+});
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   winston.info(`Listening on port ${port}...`);
