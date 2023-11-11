@@ -5,6 +5,7 @@ const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const { User } = require("../models/user");
+const { Message } = require("../models/message");
 
 // To login
 router.post("/", async (req, res) => {
@@ -25,10 +26,20 @@ router.post("/", async (req, res) => {
       return res.status(400).json("Invalid Email or Password.");
     }
 
+    const userId = existingUser._id;
+    const messages = await Message.find({ receiver: userId });
+    const messagesCount = messages.length;
+
     const authToken = existingUser.generateAuthToken("5d");
+    const response = {
+      user: _.pick(existingUser, ["_id", "name", "email", "emailVerified", "orgLink"]),
+      messagesCount: messagesCount, 
+      messages: messages,
+    };
+    
     res
       .header("x-authentication", authToken)
-      .send(_.pick(existingUser, ["_id", "name", "email", "emailVerified", "orgLink"]));
+      .json(response);
   }
 });
 
