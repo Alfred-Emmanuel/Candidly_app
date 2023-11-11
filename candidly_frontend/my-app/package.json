@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && (cd ../candidly_backend && npm install)",
+    "start-client": "next start",
     "lint": "next lint"
   },
   "dependencies": {
