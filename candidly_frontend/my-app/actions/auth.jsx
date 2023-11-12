@@ -19,7 +19,7 @@ export const authOptions = {
         }
 
         try {
-          const response = await fetch("http://localhost:3001/api/auth", {
+          const response = await fetch(`${process.env.LOCAL_ENDPOINT}/api/auth`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

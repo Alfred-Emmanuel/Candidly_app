@@ -22,7 +22,7 @@ export async function submitRegistrationForm(formData) {
   };
 
   try {
-    const response = await fetch("http://localhost:3001/api/users", {
+    const response = await fetch(`${process.env.LOCAL_ENDPOINT}/api/users`, {
       method: "POST",
       body: JSON.stringify(formFields),
       headers: {
@@ -52,7 +52,7 @@ export async function submitResetPasswordMail(formData) {
 
   try {
     const response = await fetch(
-      "http://localhost:3001/api/users/forgot-password",
+      `${process.env.LOCAL_ENDPOINT}/api/users/forgot-password`,
       {
         method: "POST",
         body: JSON.stringify(formFields),
@@ -91,7 +91,7 @@ export async function submitNewPasswordForm(formData) {
 
   try {
     const response = await fetch(
-      `http://localhost:3001/api/users/reset_password/${token}`,
+      `${process.env.LOCAL_ENDPOINT}/api/users/reset_password/${token}`,
       {
         method: "PUT",
         headers: {
@@ -130,7 +130,8 @@ export async function sendMessage(formData) {
   };
 
   try {
-    const response = await fetch(`http://localhost:3001/api/messages/send-message/${header}`, {
+    const response = await fetch(
+      `${process.env.LOCAL_ENDPOINT}/api/messages/send-message/${header}`, {
       method: "POST",
       body: JSON.stringify(formFields),
       headers: {

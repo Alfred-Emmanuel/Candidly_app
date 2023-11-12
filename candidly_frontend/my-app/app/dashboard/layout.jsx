@@ -16,9 +16,9 @@ export default function Layout({ children }) {
     <div className="">
       <Navbar />
       <Provider>
-        <main className="pt-24 border">{children}</main>
+        <main className="pt-24">{children}</main>
       </Provider>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

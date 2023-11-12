@@ -9,20 +9,36 @@ function formatTime(timestamp) {
   
     // Calculate the time difference in days
     const daysDifference = Math.floor((currentDay - messageDay) / (24 * 60 * 60 * 1000));
+    const dayOptions = { weekday: 'long' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit' };
   
     if (daysDifference >= 7) {
-      // Show the actual date if it has exceeded one week
       return messageDate.toLocaleString();
     } else if (daysDifference > 0 && daysDifference < 2) {
-      // Show "yesterday at HH:mm" if it has exceeded one day
-      return `Yesterday at ${messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+      return (
+        <div>
+          <p>
+            Yesterday
+          </p>
+          <p>
+            {messageDate.toLocaleTimeString([], timeOptions)}
+          </p>
+        </div>
+      );
     } else if (daysDifference === 0) {
-        // Show "Today at HH:mm" if the message was sent today
-        return `Today at ${messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        return (
+          <div>
+            <p>Today</p>
+            <p>{messageDate.toLocaleTimeString([], timeOptions)}</p>
+          </div>
+        );
     } else {
-      // Show the day of the week at HH:mm for other cases
-      const options = { weekday: 'long', hour: '2-digit', minute: '2-digit' };
-      return messageDate.toLocaleDateString('en-US', options);
+      return (
+        <div>
+          <div>{messageDate.toLocaleDateString('en-US', dayOptions)}</div>
+          <div>{messageDate.toLocaleTimeString([], timeOptions)}</div>
+        </div>
+      )
     }
   }
   
