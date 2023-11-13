@@ -10,7 +10,7 @@ function CompaniesLove() {
       <div className="md:flex gap-10 px-5">
         <div className="md:w-[27%] shadow-lg px-4 py-5 mb-10 md:mb-0">
           <p className="md:text-[1.1rem] font-semibold mb-4">
-            "A game changer for office culture"
+            &quot;A game changer for office culture&quot;
           </p>
           <p className="text-textColor text-[0.9rem] mb-4 pr-3 md:mb-6 leading-6 md:pr-5">
             As an HR manager, I decided to implement the Candidly Review Hub to
@@ -39,7 +39,7 @@ function CompaniesLove() {
         </div>
         <div className="md:w-[27%] shadow-lg px-4 py-5 mb-10 md:mb-0">
           <p className="md:text-[1.1rem] font-semibold mb-4">
-            "The office revolution we needed"
+            &quot;The office revolution we needed&quot;
           </p>
           <p className="text-textColor text-[0.9rem] mb-4 pr-5 md:mb-6 leading-6">
             Our company has witnessed a remarkable positive shift in workplace
@@ -67,11 +67,11 @@ function CompaniesLove() {
         </div>
         <div className="md:w-[27%] shadow-lg px-4 py-5">
           <p className="md:text-[1.1rem] font-semibold mb-4">
-            "Office Transformation"
+            &quot;Office Transformation&quot;
           </p>
           <p className="text-textColor text-[0.9rem] mb-4 pr-5 md:mb-6 leading-6">
             This platform has been a game-changer in our office culture. As an
-            employee, I feel heard, and the management's proactive response to
+            employee, I feel heard, and the management&quot;s proactive response to
             our anonymous feedback has already led to noticeable changes
           </p>
           <div className="flex justify-between items-baseline ">

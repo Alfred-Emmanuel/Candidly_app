@@ -34,7 +34,7 @@ function formatTime(timestamp) {
         );
     } else {
       return (
-        <div>
+        <div className='responsive-containe'>
           <div>{messageDate.toLocaleDateString('en-US', dayOptions)}</div>
           <div>{messageDate.toLocaleTimeString([], timeOptions)}</div>
         </div>

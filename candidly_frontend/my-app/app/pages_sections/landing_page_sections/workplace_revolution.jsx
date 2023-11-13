@@ -21,7 +21,7 @@ function WorkplaceRevolution() {
             We are on a mission to Fostering Workplace Transparency. Join us!
           </h1>
           <p className="text-[1.02rem] mb-5 md:mb-0 md:text-[1rem] w-[90%] text-textColor md:w-[80%] md:mt-5 md:mb-3">
-            Candidly's mission is to empower employees and organizations to
+            Candidly&quot;s mission is to empower employees and organizations to
             create healthier, more productive workplaces through open, anonymous
             feedback. We believe in the transformative power of candid
             communication, driving positive change, and building trust among all
