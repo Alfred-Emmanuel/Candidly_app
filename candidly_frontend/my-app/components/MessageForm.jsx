@@ -47,14 +47,14 @@ const MessageForm = (userId) => {
             name="header"
           />
         </div>
-        <div className="">
+        {/* <div className="">
           <input
             type="file"
             // required
             className="w-full h-12 bg-gray-50 border border-black  px-5 rounded-lg "
             name="imageFile"
           />
-        </div>
+        </div> */}
         <div className="mt-4 md:mt-10 lg:mt-4">
           <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1.2rem lg:text-[1rem]">Type your anonymous message <span className="text-red-500">*</span></h1>
           <textarea

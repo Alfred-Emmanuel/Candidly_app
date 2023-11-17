@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     const authToken = existingUser.generateAuthToken("5d");
     const response = {
       user: _.pick(existingUser, ["_id", "name", "email", "emailVerified", "orgLink"]),
-      messagesCount: messagesCount, 
+      // messagesCount: messagesCount, 
       messages: messages,
     };
     

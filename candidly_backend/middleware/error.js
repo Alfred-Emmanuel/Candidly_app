@@ -20,6 +20,6 @@ module.exports = function (err, req, res, next) {
     }
   } else {
     winston.error(err.message, err);
-    res.status(500).send("Something broke!");
+    res.status(500).send(err.message, err);
   }
 };

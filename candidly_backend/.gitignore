@@ -1,5 +1,5 @@
 node_modules/
 .env
 logfile.log
-uncaughtException.log
+uncaughtExceptions.log
 ```

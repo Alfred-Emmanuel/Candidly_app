@@ -46,9 +46,13 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
+
+      if (trigger === "update") {
+        return {...token, ...session.user}
+      }
+      
       if (user) {
-        
         return {
           ...token,
           ...user,
@@ -57,10 +61,12 @@ export const authOptions = {
       return token;
     },
     async session({ session, token }) {
+      // strategy: "jwt";
       session.user = token;
       return session;
     },
   },
+  session: { strategy: "jwt" }
 };
 
 export default NextAuth(authOptions);

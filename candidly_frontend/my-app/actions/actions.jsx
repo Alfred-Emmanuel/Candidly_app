@@ -118,7 +118,7 @@ export async function sendMessage(formData) {
   const header = formData.get("header")?.toString();
   const content = formData.get("content")?.toString();
   const receiverId = formData.get("receiverId")?.toString();
-  const imageFile = formData.get("imageFile")?.toString();
+  // const imageFile = formData.get("imageFile")?.toString();
 
   if (!header || !content || !receiverId) throw new Error("BLANK_FIELD");
 
@@ -126,7 +126,7 @@ export async function sendMessage(formData) {
     header,
     content,
     receiverId,
-    imageFile,
+    // imageFile,
   };
 
   try {
@@ -144,6 +144,25 @@ export async function sendMessage(formData) {
       const data = await response.json();
       return data;
     }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getMessages(token) {
+  revalidatePath("/dashboard");
+  try {
+    const response = await fetch(
+      `${process.env.LOCAL_ENDPOINT}/api/messages/my_messages`, {
+        method: "GET",
+        headers: {
+          // Authorization: `Bearer ${session.accessToken}`,
+          "x-authentication": `${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw new Error(error.message);
   }
