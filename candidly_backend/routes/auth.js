@@ -19,14 +19,14 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ message: "Please verify your email first."});
   }
   if (!existingUser) {
-    return res.status(400).json("Invalid Email or Password.");
+    return res.status(400).json({ message: "Invalid Email or Password."});
   } else {
     const validPassword = await bcrypt.compare(
       req.body.password,
       existingUser.password
     );
     if (!validPassword) {
-      return res.status(400).json("Invalid Email or Password.");
+      return res.status(400).json({message: "Invalid Email or Password."});
     }
 
     const userId = existingUser._id;
