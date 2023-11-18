@@ -15,6 +15,9 @@ router.post("/", async (req, res) => {
 
   const existingUser = await User.findOne({ email: req.body.email });
 
+  if (existingUser && !existingUser.emailVerified) {
+    return res.status(400).json("Please verify your email first.");
+  }
   if (!existingUser) {
     return res.status(400).json("Invalid Email or Password.");
   } else {
