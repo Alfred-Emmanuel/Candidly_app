@@ -21,7 +21,7 @@ async function awsUploadS3Client(files) {
         const url = `https://${bucketName}.s3.af-south-1.amazonaws.com/${encodedFileName}`;
         uploadUrls.push(url);
       } catch (error) {
-        console.error("Error uploading file:", error);
+        console.error("Error uploading file: ", error);
       }
     }
   
