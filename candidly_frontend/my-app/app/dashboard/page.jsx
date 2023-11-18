@@ -2,7 +2,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { MessageCircle, BookText, ListFilter } from "lucide-react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import toast from "react-hot-toast";
+import { MessageCircle, BookText, Copy } from "lucide-react";
 import DisplayMessages from "@/components/DisplayMessages";
 import Insights from "@/components/Insights";
 import { useState, useEffect } from "react";
@@ -24,11 +26,14 @@ function Page() {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [messages, setMessages] = useState([]);
   let token = "";
+  let link = "";
 
   const comparator = (a, b) => new Date(b.timestamp) - new Date(a.timestamp);
 
   if (session) {
     token = session.user.authToken
+    link = session.user.user.user.orgLink
+    // console.log(link)
   }
 
   useEffect(() => {
@@ -36,7 +41,7 @@ function Page() {
       try {
         if (token) {
           const data = await getMessages(token);
-          console.log(data)
+          // console.log(data)
           setMessages(data);
         }
       } catch (error) {
@@ -46,6 +51,10 @@ function Page() {
 
     fetchData();
   }, [session]);
+
+  const handleCopy = () => {
+    toast.success("Text copied to clipboard");
+  };
 
   return (
     <section className="pt-24 px-5 md:px-16 mb-10">
@@ -87,11 +96,20 @@ function Page() {
         {(isDefaultRendered || isMessageClicked || isInsightClicked) && (
           <>
             {isDefaultRendered && (
-              <div className=" flex items-center justify-center w-full md:w-[95%] border shadow-lg rounded-lg bg-white scroll-container">
+              <div className=" flex flex-col items-center justify-center w-full md:w-[95%] border shadow-lg rounded-lg bg-white h-[75vh] scroll-container">
                 <div>
                   <h1 className="text-[1.3rem] md:text-[1.35rem]">Welcome Back</h1>
-                  {/* <p className="text-[0.2rem]">{token}</p> */}
+                  <p>Share the link below to start receiving messages</p>
                 </div>
+                <CopyToClipboard text={link} onCopy={handleCopy}>
+                  <div
+                    style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+                    className="border mt-3 rounded-lg px-3 py-2 bg-gray-100 gap-[2%] w-[80%] md:w-full"
+                  >
+                    <span>{link}</span>
+                    <Copy style={{ marginLeft: '5px' }} />
+                  </div>
+                </CopyToClipboard>
               </div>
             )}
             {isMessageClicked && (
