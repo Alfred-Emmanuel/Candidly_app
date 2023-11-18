@@ -19,7 +19,8 @@ export const authOptions = {
         }
 
         try {
-          const response = await fetch(`${process.env.LOCAL_ENDPOINT}/api/auth`, {
+          // const response = await fetch(`${process.env.LOCAL_ENDPOINT}/api/auth`, {
+            const response = await fetch(`${process.env.PRODUCTION_ENDPOINT}/api/auth`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

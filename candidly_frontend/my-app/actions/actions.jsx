@@ -22,7 +22,8 @@ export async function submitRegistrationForm(formData) {
   };
 
   try {
-    const response = await fetch(`${process.env.LOCAL_ENDPOINT}/api/users`, {
+    // const response = await fetch(`${process.env.LOCAL_ENDPOINT}/api/users`, {
+      const response = await fetch(`${process.env.PRODUCTION_ENDPOINT}/api/users`, {
       method: "POST",
       body: JSON.stringify(formFields),
       headers: {
@@ -52,7 +53,8 @@ export async function submitResetPasswordMail(formData) {
 
   try {
     const response = await fetch(
-      `${process.env.LOCAL_ENDPOINT}/api/users/forgot-password`,
+      // `${process.env.LOCAL_ENDPOINT}/api/users/forgot-password`,
+      `${process.env.PRODUCTION_ENDPOINT}/api/users/forgot-password`,
       {
         method: "POST",
         body: JSON.stringify(formFields),
@@ -91,7 +93,8 @@ export async function submitNewPasswordForm(formData) {
 
   try {
     const response = await fetch(
-      `${process.env.LOCAL_ENDPOINT}/api/users/reset_password/${token}`,
+      // `${process.env.LOCAL_ENDPOINT}/api/users/reset_password/${token}`,
+      `${process.env.PRODUCTION_ENDPOINT}/api/users/reset_password/${token}`,
       {
         method: "PUT",
         headers: {
@@ -131,7 +134,8 @@ export async function sendMessage(formData) {
 
   try {
     const response = await fetch(
-      `${process.env.LOCAL_ENDPOINT}/api/messages/send-message/${header}`, {
+      // `${process.env.LOCAL_ENDPOINT}/api/messages/send-message/${header}`, {
+        `${process.env.PRODUCTION_ENDPOINT}/api/messages/send-message/${header}`, {
       method: "POST",
       body: JSON.stringify(formFields),
       headers: {
@@ -153,7 +157,8 @@ export async function getMessages(token) {
   revalidatePath("/dashboard");
   try {
     const response = await fetch(
-      `${process.env.LOCAL_ENDPOINT}/api/messages/my_messages`, {
+      // `${process.env.LOCAL_ENDPOINT}/api/messages/my_messages`, {
+        `${process.env.PRODUCTION_ENDPOINT}/api/messages/my_messages`, {
         method: "GET",
         headers: {
           // Authorization: `Bearer ${session.accessToken}`,
