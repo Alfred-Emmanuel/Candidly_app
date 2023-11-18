@@ -14,7 +14,7 @@ import { getMessages } from "@/actions/actions";
 const socket = io("http://localhost:3000");
 
 socket.on("connect", () => {
-  console.log("Socket connected!");
+  // console.log("Socket connected!");/
 });
 
 
@@ -29,6 +29,12 @@ function Page() {
   let link = "";
 
   const comparator = (a, b) => new Date(b.timestamp) - new Date(a.timestamp);
+
+  function back() {
+    setIsDefaultRendered(true);
+    setIsMessageClicked(false);
+    setIsInsightClicked(false);
+  }
 
   if (session) {
     token = session.user.authToken
@@ -58,7 +64,7 @@ function Page() {
 
   return (
     <section className="pt-24 px-5 md:px-16 mb-10">
-      <Link href="/dashboard" className="text-blue-500 hover:text-blue-600">
+      <Link href="/dashboard" className="text-blue-500 hover:text-blue-600" onClick={() => {back()}}>
         Back
       </Link>
       <div className="md:flex gap-[2%] md:mt-5">
@@ -96,17 +102,17 @@ function Page() {
         {(isDefaultRendered || isMessageClicked || isInsightClicked) && (
           <>
             {isDefaultRendered && (
-              <div className=" flex flex-col items-center justify-center w-full md:w-[95%] border shadow-lg rounded-lg bg-white h-[75vh] scroll-container">
-                <div>
-                  <h1 className="text-[1.3rem] md:text-[1.35rem]">Welcome Back</h1>
-                  <p>Share the link below to start receiving messages</p>
+              <div className=" flex flex-col text-center items-center justify-center w-full md:w-[95%] border shadow-lg rounded-lg bg-white h-[75vh] scroll-container">
+                <div className="px-3 md:px-0">
+                  <h1 className="text-[1.3rem] md:text-[1.35rem] font-semibold">Welcome Back</h1>
+                  <p className="text-[0.9rem] md:text-[1rem]">Share the link below to start receiving messages</p>
                 </div>
                 <CopyToClipboard text={link} onCopy={handleCopy}>
                   <div
                     style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-                    className="border mt-3 rounded-lg px-3 py-2 bg-gray-100 gap-[2%] w-[80%] md:w-full"
+                    className="border mt-3 rounded-lg px-3 py-2 bg-gray-100 gap-[2%] w-[90%] md:w-[50%] text-center"
                   >
-                    <span>{link}</span>
+                    <span className="text-center w-[85%]" style={{ overflowWrap: 'break-word' }}>{link}</span>
                     <Copy style={{ marginLeft: '5px' }} />
                   </div>
                 </CopyToClipboard>
@@ -115,7 +121,7 @@ function Page() {
             {isMessageClicked && (
               <DisplayMessages messages={messages} comparator={comparator} />
             )}
-            {isInsightClicked && <Insights messages={messages}/>} {/* Render Insights component */}
+            {isInsightClicked && <Insights messages={messages}/>}
           </>
         )}
       </div>

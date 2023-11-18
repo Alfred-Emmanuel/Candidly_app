@@ -13,18 +13,14 @@ function DisplayMessages({ messages, comparator }) {
     const [hoveredMessage, setHoveredMessage] = useState(null);
 
     useEffect(() => {
-        // Check the screen width and set isMobileView accordingly
         const handleResize = () => {
-          setIsMobileView(window.innerWidth < 768); // Adjust the breakpoint as needed
+          setIsMobileView(window.innerWidth < 768);
         };
     
-        // Initial check on component mount
         handleResize();
     
-        // Attach the event listener for screen size changes
         window.addEventListener("resize", handleResize);
     
-        // Clean up the event listener on component unmount
         return () => {
           window.removeEventListener("resize", handleResize);
         };
@@ -34,15 +30,12 @@ function DisplayMessages({ messages, comparator }) {
       setHoveredMessage(message);
     };
 
-    // setIsMobileView(true);
     const handleSelectMessage = (message) => {
         setSelectedMessage(message);
-        // setIsMobileView(true);
       };
   
     const handleMouseLeave = () => {
       setHoveredMessage(null);
-    //   setIsMobileView(false);
     };
 
   return (
@@ -54,38 +47,40 @@ function DisplayMessages({ messages, comparator }) {
               <ListFilter className="w-[9%]" />
               <p className=" text-[0.6rem]">Filter</p>
             </div>
-            <div className="mt-3 h-[72vh] md:h-[85%] scroll-container">
+            <div className="relative mt-3 h-[72vh] md:h-[85%] scroll-container">
               <p className="text-textColor text-[0.7rem] mb-3">All messages</p>
               <div className="">
-                {messages.sort(comparator).map((message) => (
-                <div 
-                    className={`flex justify-between mb-5 cursor-pointer hover:bg-[#F4F4F4] rounded-lg p-2 ${
-                    selectedMessage && selectedMessage._id === message._id ? 'bg-[#F4F4F4]' : ''
-                    }`}
-                    key={message._id}  
-                    onClick={() => {
-                    handleSelectMessage(message);
-                    // setIsModalOpen(true);
-                    }}
-                    onMouseEnter={() => handleMouseEnter(message)}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    <div className="flex gap-[5%] w-[70%]">
-                        <div className="w-[20%]">
-                        <Image src="/anonymous.png" width={40} height={40} alt="anon" />
-                      </div>
-                      <div className="w-[70%]">
-                        <h1 className="font-semibold text-[0.9rem] mb-1">Anonymous</h1>
-                        <p className="text-[0.75rem] text-textColor">
-                          {truncateWords(message.content, 6)}
-                        </p>
-                      </div>
-                    </div>
-                    <div className=" text-textColor text-[0.65rem]">
-                      {formatTime(message.timestamp)}
-                    </div>
+                {messages.length === 0 ? (
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
+                    <h1 className="font-semibold text-center text-[1.2rem]">No messages available.</h1>
                   </div>
-                ))}
+                ) : (
+                  messages.sort(comparator).map((message) => (
+                    <div
+                      className={`flex justify-between mb-5 cursor-pointer hover:bg-[#F4F4F4] rounded-lg p-2 ${
+                        selectedMessage && selectedMessage._id === message._id ? 'bg-[#F4F4F4]' : ''
+                      }`}
+                      key={message._id}
+                      onClick={() => {
+                        handleSelectMessage(message);
+                        // setIsModalOpen(true);
+                      }}
+                      onMouseEnter={() => handleMouseEnter(message)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="flex gap-[5%] w-[70%]">
+                        <div className="w-[20%]">
+                          <Image src="/anonymous.png" width={40} height={40} alt="anon" />
+                        </div>
+                        <div className="w-[70%]">
+                          <h1 className="font-semibold text-[0.9rem] mb-1">Anonymous</h1>
+                          <p className="text-[0.75rem] text-textColor">{truncateWords(message.content, 6)}</p>
+                        </div>
+                      </div>
+                      <div className=" text-textColor text-[0.65rem]">{formatTime(message.timestamp)}</div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

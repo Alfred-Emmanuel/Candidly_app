@@ -22,7 +22,7 @@ export const LoginForm = () => {
       password: password,
       redirect: false,
     });
-    console.log(signInData)
+    // console.log(signInData)
 
     if (signInData?.error) {
       toast.error(signInData.error);

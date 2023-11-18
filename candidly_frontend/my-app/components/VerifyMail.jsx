@@ -12,7 +12,7 @@ const VerifyMail = ({ isOpen, closeModal }) => {
             You have successfully registered.
           </h2>
           <p className="md:w-[60%] md:mx-auto">
-            Check your mailbox including the spam on how to verify your account.
+            Check your mailbox including the spam folder on how to verify your account.
           </p>
           <button
             className="bg-[#000080] md:w-[50%] h-12 rounded-lg mt-8"

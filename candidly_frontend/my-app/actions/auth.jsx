@@ -39,7 +39,7 @@ export const authOptions = {
             return { user, authToken };
           }
 
-          throw new Error("Invalid Email or Password");
+          throw new Error(user.message);
         } catch (error) {
           throw new Error(error.message);
         }

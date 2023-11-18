@@ -11,10 +11,10 @@ function Insights({messages}) {
                     <h1 className='mb-1 text-[1.1rem] font-semibold'>Total number of responses</h1>
                     <p className='text-[1rem]'>{messages.length}</p>
                 </div>
-                <div className='border px-3 py-2 rounded-md'>
+                {/* <div className='border px-3 py-2 rounded-md'>
                     <h1 className='mb-1 text-[1.1rem] font-semibold'>Average response per rate</h1>
                     <p className='text-[1rem]'>20</p>
-                </div>
+                </div> */}
                 
             </div>
         </div>

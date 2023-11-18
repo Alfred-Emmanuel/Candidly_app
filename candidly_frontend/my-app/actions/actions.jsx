@@ -172,3 +172,19 @@ export async function getMessages(token) {
     throw new Error(error.message);
   }
 }
+
+export async function verifyMail(token) {
+  // revalidatePath("/dashboard");
+  try {
+    const response = await fetch(
+      // `${process.env.LOCAL_ENDPOINT}/verify/${token}`, {
+        `${process.env.PRODUCTION_ENDPOINT}/verify/${token}`, {
+        method: "GET",
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
