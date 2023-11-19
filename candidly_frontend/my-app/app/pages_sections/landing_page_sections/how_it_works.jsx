@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function HowItWorks() {
   return (
-    <section className="md:mt-28 px-5 md:px-0">
+    <section className="md:mt-28 px-5 md:px-0" id="features">
       <div className="md:px-28">
         <h1 className="text-2xl font-serif">
           HOW IT <br />{" "}

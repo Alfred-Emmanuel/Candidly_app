@@ -13,8 +13,8 @@ export const NewPasswordForm = ({ token }) => {
     setShowPassword(prev => !prev);
   };
 
-  const router = useRouter();
-//   console.log(token.reset[0]);
+  // const router = useRouter();
+  console.log(token.reset);
 
   async function clientAction(formData) {
     try {
@@ -95,7 +95,7 @@ export const NewPasswordForm = ({ token }) => {
         </div>
       </div>
       <div>
-        <input type="hidden" name="token" value={token.reset[0]} />
+        <input type="hidden" name="token" value={token.reset} />
       </div>
       <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
         Submit New Password

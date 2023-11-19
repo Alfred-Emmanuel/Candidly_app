@@ -50,16 +50,16 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex w-[60%] text-[1.1rem] text-textColor justify-around items-center">
             <li>
-              <Link href="#timeline" className="hovered-link">
+              <Link href="/#features" className="hovered-link">
                 Features
               </Link>
             </li>
             <li>
-              <Link href="/" className="hovered-link">
+              <Link href="/#about" className="hovered-link">
                 About Us
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="#faqs" className="hovered-link">
                 FAQs
               </Link>
@@ -68,7 +68,7 @@ const Navbar = () => {
               <Link href="/contact" className="hovered-link">
                 Contact
               </Link>
-            </li>
+            </li> */}
           </ul>
           <div className="flex items-center justify-between w-[20%]">
             <Link

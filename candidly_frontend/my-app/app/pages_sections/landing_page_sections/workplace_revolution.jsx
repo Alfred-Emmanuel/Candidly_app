@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 function WorkplaceRevolution() {
   return (
-    <section className="mt-10 pt-10 md:pt-16 pb-20 px-5 md:px-28 bg-[#F1F1FF]">
+    <section className="mt-10 pt-10 md:pt-16 pb-20 px-5 md:px-28 bg-[#F1F1FF]" id="about">
       <h1 className="text-2xl font-serif">
         WE ARE INITIATING A WORKPLACE <br />
         <span className="text-primaryColor text-3xl">REVOLUTION</span>

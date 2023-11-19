@@ -1,6 +1,8 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+import Loading from "../loading";
 import { useSession } from "next-auth/react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import toast from "react-hot-toast";

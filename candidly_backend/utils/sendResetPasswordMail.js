@@ -16,7 +16,7 @@ function sendResetPasswordEmail(email, verificationToken) {
     from: process.env.EMAIL,
     to: email,
     subject: "Reset Your Candidly Password",
-    text: `Click the following link to reset your password: ${process.env.PRODUCTION_URL}/reset_password/${verificationToken}`,
+    text: `Click the following link to reset your password: ${process.env.LOCAL_URL}/reset_password/${verificationToken}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

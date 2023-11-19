@@ -143,7 +143,7 @@ router.put("/reset_password/:token", async (req, res) => {
       });
     }
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    return res.status(400).json({ error: "Invalid or expired token, make a new password reset request" });
   }
 });
 
