@@ -60,7 +60,7 @@ router.post("/", async (req, res) => {
 
 //To receive mail to reset password
 router.post("/forgot-password", async (req, res) => {
-  const existingUser = await User.findOne({ email: req.body.email });
+  const existingUser = await User.findOne({ email: req.body.email.toLowerCase() });
   if (!existingUser)
     return res.status(400).json({ error: "Email doesn't exist" });
   else if (existingUser.emailVerified === false)

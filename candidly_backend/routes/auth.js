@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).json(error.details[0].message);
 
-  const existingUser = await User.findOne({ email: req.body.email });
+  const existingUser = await User.findOne({ email: req.body.email.toLowerCase() });
 
   if (existingUser && !existingUser.emailVerified) {
     return res.status(400).json({ message: "Please verify your email first."});
