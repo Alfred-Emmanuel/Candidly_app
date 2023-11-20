@@ -8,7 +8,7 @@ function CompaniesLove() {
         <span className="text-primaryColor text-3xl ">CANDIDLY</span>
       </h1>
       <div className="md:flex gap-10 px-5">
-        <div className="md:w-[27%] shadow-lg px-4 py-5 mb-10 md:mb-0">
+        <div className="md:w-[27%] relative shadow-lg px-4 py-5 mb-10 md:mb-0">
           <p className="md:text-[1.1rem] font-semibold mb-4">
             &quot;A game changer for office culture&quot;
           </p>
@@ -19,7 +19,7 @@ function CompaniesLove() {
             honestly
           </p>
           <div className="flex justify-between items-baseline ">
-            <div className="flex gap-3 ">
+            <div className="flex gap-3 absolute bottom-3 ">
               <Image
                 src="/two-women.png"
                 width={40}
@@ -37,7 +37,7 @@ function CompaniesLove() {
             {/* <p className="text-textColor text-[0.9rem]">Coachely</p> */}
           </div>
         </div>
-        <div className="md:w-[27%] shadow-lg px-4 py-5 mb-10 md:mb-0">
+        <div className="md:w-[27%] shadow-lg px-4 py-5 mb-10 md:mb-0 relative md:pb-20">
           <p className="md:text-[1.1rem] font-semibold mb-4">
             &quot;The office revolution we needed&quot;
           </p>
@@ -46,7 +46,7 @@ function CompaniesLove() {
             dynamics since implementing this platform. It empowers our employees
             to share their thoughts anonymously, fostering open communication.
           </p>
-          <div className="flex justify-between items-baseline ">
+          <div className="flex justify-between items-baseline absolute bottom-3">
             <div className="flex gap-3 ">
               <Image
                 src="/two-women.png"
@@ -55,7 +55,7 @@ function CompaniesLove() {
                 alt="#"
                 className="rounded-full h-10 "
               />
-              <div>
+              <div className="">
                 <p className="font-semibold">Alfred Max</p>
                 <p className="text-textColor text-[0.9rem]">
                   Product Designer, Lannce
@@ -65,7 +65,7 @@ function CompaniesLove() {
             {/* <p className="text-textColor text-[0.9rem]">Lannce</p> */}
           </div>
         </div>
-        <div className="md:w-[27%] shadow-lg px-4 py-5">
+        <div className="md:w-[27%] shadow-lg px-4 py-5 relative">
           <p className="md:text-[1.1rem] font-semibold mb-4">
             &quot;Office Transformation&quot;
           </p>
@@ -74,7 +74,7 @@ function CompaniesLove() {
             employee, I feel heard, and the management&quot;s proactive response to
             our anonymous feedback has already led to noticeable changes
           </p>
-          <div className="flex justify-between items-baseline ">
+          <div className="flex justify-between items-baseline absolute bottom-3 ">
             <div className="flex gap-3 ">
               <Image
                 src="/two-women.png"

@@ -46,9 +46,9 @@ const Navbar = () => {
         <Link href="/" className="text-3xl font-bold md:mr-[15%] text-[#241F1F]">
           Candid<span className="text-primaryColor">ly</span>
         </Link>
-        <div className="lg:flex justify-between items-center lg:w-[80%] lg:mr-[2%]">
+        <div className="lg:flex justify-around items-center lg:w-[80%] lg:mr-[2%]">
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex w-[60%] text-[1.1rem] text-textColor justify-around items-center">
+          <ul className="hidden lg:flex w-[35%] text-[1.1rem] text-textColor justify-around items-center">
             <li>
               <Link href="/#features" className="hovered-link">
                 Features

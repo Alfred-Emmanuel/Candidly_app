@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Loading from "../loading";
 import { useSession } from "next-auth/react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Navbar from "@/components/DashboardNavbar";
 import toast from "react-hot-toast";
 import { MessageCircle, BookText, Copy } from "lucide-react";
 import DisplayMessages from "@/components/DisplayMessages";
@@ -29,6 +30,7 @@ function Page() {
   const [messages, setMessages] = useState([]);
   let token = "";
   let link = "";
+  let name = "";
 
   const comparator = (a, b) => new Date(b.timestamp) - new Date(a.timestamp);
 
@@ -41,6 +43,7 @@ function Page() {
   if (session) {
     token = session.user.authToken
     link = session.user.user.user.orgLink
+    name = session.user.user.user.name
     // console.log(link)
   }
 
@@ -65,6 +68,8 @@ function Page() {
   };
 
   return (
+    <>
+    <Navbar name={name}/>
     <section className="pt-24 px-5 md:px-16 mb-10">
       <Link href="/dashboard" className="text-blue-500 hover:text-blue-600" onClick={() => {back()}}>
         Back
@@ -128,6 +133,7 @@ function Page() {
         )}
       </div>
     </section>
+    </>
   );
 }
 
