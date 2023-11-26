@@ -96,14 +96,21 @@ function DisplayMessages({ messages, comparator }) {
             <div className="bg-gray-50 h-[85%] mt-4 md:mt-3 md:mb-2 rounded-lg px-5 py-5 scroll-container">
             {selectedMessage ? (    
                 <div className="">
-                <div className="md:py-3 border-b-2 flex items-baseline">
-                    <div>
-                        <h1 className="text-[1.1rem] mb-1 md:mt-0 md:mb-0 font-semibold capitalize">{selectedMessage.header}</h1>
-                    </div>
-                </div>
-                <div className="md:mt-3">
-                    <p className="text-textColor leading-8">{selectedMessage.content}</p>
-                </div>
+                  <div className="md:py-3 border-b-2 flex items-baseline">
+                      <div>
+                          <h1 className="text-[1.1rem] mb-1 md:mt-0 md:mb-0 font-semibold capitalize">{selectedMessage.header}</h1>
+                      </div>
+                  </div>
+                  <div className="md:mt-3">
+                      <p className="text-textColor leading-8">{selectedMessage.content}</p>
+                      {selectedMessage.images.length > 0 && (
+                        <div className="">
+                          {selectedMessage.images.map((image, index) => (
+                            <Image key={index} src={image} alt={`Image ${index}`} width={500} height={500} className="py-3 rounded-lg" />
+                          ))}
+                        </div>
+                      )}
+                  </div>
                 </div>
             ) : (
                 <p className="hidden md:block">No message selected</p>
@@ -130,6 +137,7 @@ function DisplayMessages({ messages, comparator }) {
                 </div>
                 <div className="md:mt-3">
                     <p className="text-textColor leading-8">{selectedMessage.content}</p>
+                    {/* <Image src={`/anonymous.png`} width={100} height={100}/> */}
                 </div>
                 </div>
             ) : (
