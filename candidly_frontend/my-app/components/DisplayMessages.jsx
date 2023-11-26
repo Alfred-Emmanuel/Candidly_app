@@ -2,6 +2,7 @@ import { ListFilter, FileOutput } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 // import { revalidatePath } from "next/cache";
+import ImageModal from "./ImageModal";
 import formatTime from "@/utils/formatTime";
 import truncateWords from "@/utils/truncateWords";
 import { useState, useEffect } from "react";
@@ -11,6 +12,18 @@ function DisplayMessages({ messages, comparator }) {
     const [selectedMessage, setSelectedMessage] = useState(null);
     const [isMobileView, setIsMobileView] = useState(false);
     const [hoveredMessage, setHoveredMessage] = useState(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const openModal = (image) => {
+      setSelectedImage(image);
+      setModalIsOpen(true);
+    };
+  
+    const closeModal = () => {
+      setSelectedImage(null);
+      setModalIsOpen(false);
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -106,8 +119,19 @@ function DisplayMessages({ messages, comparator }) {
                       {selectedMessage.images.length > 0 && (
                         <div className="">
                           {selectedMessage.images.map((image, index) => (
-                            <Image key={index} src={image} alt={`Image ${index}`} width={500} height={500} className="py-3 rounded-lg" />
+                            <Image 
+                              key={index} 
+                              src={image} 
+                              alt={`Image ${index}`} 
+                              width={500} 
+                              height={500} 
+                              className="my-5 rounded-lg border cursor-pointer hover:opacity-80"
+                              onClick={() => openModal(image)}
+                            />
                           ))}
+                           {selectedImage && (
+                              <ImageModal isOpen={modalIsOpen} onClose={closeModal} images={[selectedImage]} />
+                            )}
                         </div>
                       )}
                   </div>
