@@ -3,16 +3,7 @@ const express = require("express");
 const app = express();
 const winston = require("winston");
 const {Server} = require("socket.io");
-const cors = require("cors");
 const { initializeSocket } = require("./startup/socket");
-
-app.use(cors());
-
-// const io = new Server(expressServer, {
-//   // cors: {
-//   //   origin: "*",
-//   //   methods: ["GET", "POST"],
-//   // },});
 
 const port = process.env.PORT || 3000;
 

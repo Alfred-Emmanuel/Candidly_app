@@ -13,21 +13,18 @@ import Insights from "@/components/Insights";
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { getMessages } from "@/actions/actions";
+import { useRouter } from "next/navigation";
 
 const socket = io("http://localhost:3000");
 
-socket.on("connect", () => {
-  // console.log("Socket connected!");/
-});
-
-
 function Page() {
-  const { data: session, update } = useSession();
+  const { data: session, status } = useSession();
   const [isMessageClicked, setIsMessageClicked] = useState(false);
   const [isInsightClicked, setIsInsightClicked] = useState(false);
   const [isDefaultRendered, setIsDefaultRendered] = useState(true);
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [messages, setMessages] = useState([]);
+  const router = useRouter();
   let token = "";
   let link = "";
   let name = "";
@@ -40,11 +37,17 @@ function Page() {
     setIsInsightClicked(false);
   }
 
+  if (status === 'unauthenticated') {
+    // Loading state, you can show a loading spinner or other UI
+    // return <div>Loading...</div>;
+    router.push("/login");
+    toast.error("You need to login first");
+  }
+
   if (session) {
     token = session.user.authToken
     link = session.user.user.user.orgLink
     name = session.user.user.user.name
-    // console.log(link)
   }
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { submitResetPasswordMail as submitForm } from "@/actions/actions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { SubmitEmail as Button } from "./Button";
 
 export const ResetPasswordForm = () => {
   const router = useRouter();
@@ -42,9 +43,10 @@ export const ResetPasswordForm = () => {
           name="email"
         />
       </div>
-      <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
+      {/* <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
         Submit Email
-      </button>
+      </button> */}
+      <Button />
     </form>
   );
 };

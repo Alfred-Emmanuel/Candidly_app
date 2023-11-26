@@ -3,7 +3,7 @@
 function Loading() {
   return (
     <main className="h-screen flex items-center justify-center">
-        <h2 className="text-primaryColor text-[1.3rem]">Loading...</h2>
+      <div className="animate-spin rounded-full h-7 w-7 border-t-4 border-b-4 border-black"></div>
     </main>
   )
 }

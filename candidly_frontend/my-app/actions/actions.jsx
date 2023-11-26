@@ -1,5 +1,6 @@
 "use server";
 
+// import { response } from "express";
 import { revalidatePath } from "next/cache";
 
 export async function submitRegistrationForm(formData) {
@@ -121,34 +122,47 @@ export async function sendMessage(formData) {
   const header = formData.get("header")?.toString();
   const content = formData.get("content")?.toString();
   const receiverId = formData.get("receiverId")?.toString();
-  // const imageFile = formData.get("imageFile")?.toString();
+  const imageFile = formData.get("imageFile");
 
   if (!header || !content || !receiverId) throw new Error("BLANK_FIELD");
 
-  const formFields = {
-    header,
-    content,
-    receiverId,
-    // imageFile,
-  };
+  const form = new FormData();
+
+  // Append fields to the FormData object
+  form.append("header", header);
+  form.append("content", content);
+  form.append("receiverId", receiverId);
+  // if (imageFile.name === "undefined") {
+  //   form.append("imageFile", imageFile);
+  // }
+  if (imageFile && imageFile.type.startsWith("image/")) {
+    form.append("imageFile", imageFile);
+  }
+  
+
+  console.log(imageFile.name)
+  console.log(form)
+
 
   try {
     const response = await fetch(
       // `${process.env.LOCAL_ENDPOINT}/api/messages/send-message/${header}`, {
         `${process.env.PRODUCTION_ENDPOINT}/api/messages/send-message/${header}`, {
       method: "POST",
-      body: JSON.stringify(formFields),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: form,
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
     });
     if (response.ok) {
       return { success: true };
     } else {
-      const data = await response.json();
-      return data;
+      const errorData = await response.json();
+      console.log(errorData)
+      throw new Error(errorData.message || errorData.error);
     }
   } catch (error) {
+    console.error(error);
     throw new Error(error.message);
   }
 }

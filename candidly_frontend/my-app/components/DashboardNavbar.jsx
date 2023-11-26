@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
-import { StepBack } from "lucide-react";
+// import { StepBack } from "lucide-react";
 import { signOut } from 'next-auth/react';
 
 function DashboardNavbar({name}) {
@@ -11,7 +11,7 @@ function DashboardNavbar({name}) {
     const UserDetails = () => {
         const handleLogout = async () => {
             await signOut();
-            router.push('/login');
+            // router.push('/login');
           };
 
         return (

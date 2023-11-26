@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const error = require("../middleware/error");
 const users = require("../routes/users");
 const auth = require("../routes/auth");
@@ -8,6 +9,7 @@ const messages = require("../routes/messages");
 module.exports = function (app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.use(cors());
   app.use("/api/users", users);
   app.use("/api/auth", auth);
   app.use("/verify", verify);

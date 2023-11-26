@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
+// import {Login} from "./Button";
+import { LoginButton as Button } from "./Button";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -64,9 +66,10 @@ export const LoginForm = () => {
           </span>
         </div>
       </div>
-      <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
+      {/* <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
         Log In
-      </button>
+      </button> */}
+      <Button />
     </form>
   );
 };

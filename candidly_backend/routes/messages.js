@@ -34,36 +34,42 @@ router.get("/my_messages", auth, async (req, res) => {
 });
 
 router.post("/send-message/:token", multiUpload, async (req, res) => {
-  const { token } = req.params;
-  let { receiverId, content, imageFile } = req.body;
+  try {
+    const { token } = req.params;
+    let { receiverId, content } = req.body;
 
-  // const results = await awsUploadS3Client(req.files.imageFile);
+    const results = req.files && req.files.imageFile ? await awsUploadS3Client(req.files.imageFile) : [];
 
-  if (!receiverId || !content ) {
-    return res.status(400).json({ error: "Missing required fields" });
+    if (!receiverId || !content) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    const { error } = validateMessage(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    const userExists = await User.findById(receiverId);
+    if (!userExists) {
+      return res.status(400).json({ error: "The receiver does not exist" });
+    }
+
+    const newMessage = new Message({
+      // sender: senderId,
+      receiver: receiverId,
+      content: content,
+      header: token,
+      images: results,
+    });
+
+    await newMessage.save();
+
+    // const io = getIo();
+
+    return res.status(200).json({ message: "Message sent successfully" });
+  } catch (error) {
+    // console.error("Error sending message:", error);
+    return res.status(500).json({ error: "Internal server error" });
   }
-
-  const { error } = validateMessage(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const userExists = await User.findById(receiverId);
-  if (!userExists) {
-    return res.status(400).json({ error: "The receiver does not exist" });
-  }
-
-  const newMessage = new Message({
-    // sender: senderId,
-    receiver: receiverId,
-    content: content,
-    header: token,
-    // images: results,
-  });
-
-  await newMessage.save();
-
-  // const io = getIo();
-
-  return res.status(200).json({ message: "Message sent successfully" });
 });
+
 
 module.exports = router;

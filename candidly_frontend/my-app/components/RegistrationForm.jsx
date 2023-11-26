@@ -4,6 +4,7 @@ import VerifyMail from "@/components/VerifyMail";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { SignupButton as Button } from "./Button";
 
 
 const RegistrationForm = () => {
@@ -104,9 +105,10 @@ const RegistrationForm = () => {
             </span>
           </div>
         </div>
-        <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
+        {/* <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
           Sign Up
-        </button>
+        </button> */}
+        <Button />
       </form>
       {formResult && formResult.success && (
         <VerifyMail isOpen={isModalOpen} closeModal={closeModal} />
