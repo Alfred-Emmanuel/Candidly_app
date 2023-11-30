@@ -76,7 +76,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between w-[20%]">
             <Link
               href={`${status === "authenticated" ? "/dashboard" : "/login"}`}
-              className={`text-textColor text-[1.1rem] font-bold ${status === "authenticated" ? "bg-primaryColor text-white w-24 px-2 h-10 flex items-center justify-center rounded-full" : ""}`}
+              className={`text-textColor text-[1.1rem] font-bold ${status === "authenticated" ? "bg-primaryColor text-white w-28 h-10 flex items-center justify-center rounded-full" : ""}`}
             >
               {status === "authenticated" ? "Dashboard" : "Login"}
             </Link>
