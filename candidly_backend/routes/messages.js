@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const { awsUploadS3Client } = require("../utils/uploadImages");
 const multer = require('multer');
+const sharp = require('sharp');
 const { Message, validateMessage } = require("../models/message");
 const { User } = require("../models/user");
 const {getIo} = require("../startup/socket");
@@ -38,7 +39,22 @@ router.post("/send-message/:token", multiUpload, async (req, res) => {
     const { token } = req.params;
     let { receiverId, content } = req.body;
 
-    const results = req.files && req.files.imageFile ? await awsUploadS3Client(req.files.imageFile) : [];
+    // const results = req.files && req.files.imageFile ? await awsUploadS3Client(req.files.imageFile) : [];
+
+    const results = req.files && req.files.imageFile
+  ? await Promise.all(
+      req.files.imageFile.map(async (image) => {
+        const resizedBuffer = await sharp(image.buffer)
+          .resize({ width: 300 }) 
+          .toBuffer();
+
+        // Upload resized image to S3
+        return awsUploadS3Client([{ originalname: image.originalname, buffer: resizedBuffer }]);
+      })
+    )
+  : [];
+
+  const flattenedResults = results.flat();
 
     if (!receiverId || !content) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -57,7 +73,7 @@ router.post("/send-message/:token", multiUpload, async (req, res) => {
       receiver: receiverId,
       content: content,
       header: token,
-      images: results,
+      images: flattenedResults,
     });
 
     await newMessage.save();
@@ -66,8 +82,8 @@ router.post("/send-message/:token", multiUpload, async (req, res) => {
 
     return res.status(200).json({ message: "Message sent successfully" });
   } catch (error) {
-    // console.error("Error sending message:", error);
-    return res.status(500).json({ error: "Internal server error" });
+    console.error("Error sending message:", error);
+    // return res.status(500).json({ error: "Internal server error" });
   }
 });
 
