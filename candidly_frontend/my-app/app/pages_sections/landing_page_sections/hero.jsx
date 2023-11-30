@@ -15,10 +15,10 @@ function Hero() {
             insights, and feedback without revealing their identities
           </p>
           <Link
-            className="bg-primaryColor md:mt-10 mt-5 mb-10 md:mb-0 text-white w-28 h-12 md:w-32 md:h-10 flex items-center justify-center rounded-full font-bold "
+            className="bg-primaryColor md:mt-10 mt-5 mb-10 md:mb-0 text-white w-24 h-12 md:w-32 md:h-10 flex items-center justify-center rounded-full font-bold "
             href="/sign_up"
           >
-            Sign up now
+            Sign up
           </Link>
         </div>
         <div className="hidden relative md:w-[55%] md:mt-10 md:flex items-center gap-[5%]">

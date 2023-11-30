@@ -21,7 +21,7 @@ function HowItWorks() {
               className="mx-auto mb-2"
             />
             <h1 className="text-[1.05rem] md:text-[1rem] font-semibold mb-4">Submit anonymous feedback</h1>
-            <p className="text-justify text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
+            <p className="text-center text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
               Our secure and confidential platform allows employees/customers to
               submit feedback, fostering a culture of transparency and openness
               in your workplace{" "}
@@ -38,7 +38,7 @@ function HowItWorks() {
             <h1 className="text-[1.05rem] md:text-[1rem] font-semibold mb-4">
               Review Collection and Analysis
             </h1>
-            <p className="text-justify text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
+            <p className="text-center text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
               Anonymous reviews are collected, analyzed, and presented to HR,
               promoting continuous improvement and transparency within the
               organization.{" "}
@@ -53,7 +53,7 @@ function HowItWorks() {
               className="mx-auto mb-2"
             />
             <h1 className="text-[1.05rem] md:text-[1rem] font-semibold mb-4">Empowerment and Improvement</h1>
-            <p className="text-justify text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
+            <p className="text-center text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
               By giving a voice to your employees, we empower your team to
               effect positive change. We offer actionable feedback to support
               continuous workplace improvement.{" "}
@@ -68,7 +68,7 @@ function HowItWorks() {
               className="mx-auto mb-2"
             />
             <h1 className="text-[1.05rem] md:text-[1rem] font-semibold mb-4">User-Friendly Interface</h1>
-            <p className="text-justify text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
+            <p className="text-center text-[0.95rem] md:text-left md:text-[0.9rem] text-textColor">
               The website features an intuitive and professional design, making
               it easy for employees to navigate and share their insights{" "}
             </p>

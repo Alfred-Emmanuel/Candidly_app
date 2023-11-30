@@ -3,10 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const { status } = useSession();
 
   useEffect(() => {
     let prevScrollY = window.scrollY;
@@ -37,6 +39,7 @@ const Navbar = () => {
   };
 
   return (
+    
     <nav
       className={`lg:h-24 bg-dark-mode-background-color md:bg-transparent lg:flex lg:items-center lg:justify-center fixed z-40 md:backdrop-blur-lg w-full -top-1 border-b transition-transform duration-300 transform ${
         isScrolled ? "-translate-y-full" : "translate-y-0"
@@ -72,18 +75,25 @@ const Navbar = () => {
           </ul>
           <div className="flex items-center justify-between w-[20%]">
             <Link
-              href="/login"
-              className="text-textColor text-[1.1rem] font-bold "
+              href={`${status === "authenticated" ? "/dashboard" : "/login"}`}
+              className="text-textColor text-[1.1rem] font-bold  "
             >
-              Login
+              {status === "authenticated" ? "Dashboard" : "Login"}
             </Link>
             <Link
               href="/sign_up"
-              className="bg-primaryColor text-white w-24 h-10 flex items-center justify-center rounded-full font-bold "
+              className={`bg-primaryColor text-white w-24 h-10 flex items-center justify-center rounded-full font-bold ${status === "authenticated" ? "hidden" : ""}`}
             >
               Sign Up
             </Link>
           </div>
+          {/* <div>
+            <Link
+              href={`/dashboard/${status === "authenticated" ? "home" : ""}`}
+            >
+              {status === "authenticated" ? "Dashboard" : "Login"}
+            </Link>
+          </div> */}
         </div>
       </div>
 
@@ -113,16 +123,16 @@ const Navbar = () => {
         >
           <ul className=" md:mb-14">
             <li className="mb-4 md:text-[1.3rem]">
-              <Link href="#timeline" onClick={closeMobileNav}>
+              <Link href="/#about" onClick={closeMobileNav}>
                 About
               </Link>
             </li>
             <li className="mb-4 md:text-[1.3rem]">
-              <Link href="/" onClick={closeMobileNav}>
+              <Link href="/#features" onClick={closeMobileNav}>
                 Features
               </Link>
             </li>
-            <li className="mb-4 md:text-[1.3rem]">
+            {/* <li className="mb-4 md:text-[1.3rem]">
               <Link href="#faqs" onClick={closeMobileNav}>
                 FAQs
               </Link>
@@ -131,19 +141,19 @@ const Navbar = () => {
               <Link href="/contact" onClick={closeMobileNav}>
                 Contact
               </Link>
-            </li>
+            </li> */}
             <li className="mb-10 mt-6">
               <Link
-                href="/login"
+                href={`${status === "authenticated" ? "/dashboard" : "/login"}`}
                 className="lg:hidden  bg-primaryColor px-5 py-3 md:px-12 md:py-4 rounded-full "
               >
-                Login
+                {status === "authenticated" ? "Dashboard" : "Login"}
               </Link>
             </li>
             <li className=" ">
               <Link
                 href="/sign_up"
-                className="lg:hidden bg-primaryColor px-5 py-3 md:px-12 md:py-4 rounded-full "
+                className={`lg:hidden bg-primaryColor px-5 py-3 md:px-12 md:py-4 rounded-full ${status === "authenticated" ? "hidden" : ""}`}
               >
                 Sign Up
               </Link>

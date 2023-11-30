@@ -5,9 +5,11 @@ import HowItWorks from "./pages_sections/landing_page_sections/how_it_works";
 import WorkplaceRevolution from "./pages_sections/landing_page_sections/workplace_revolution";
 import CompaniesLove from "./pages_sections/landing_page_sections/companies_love";
 import GetStarted from "./pages_sections/landing_page_sections/get_started";
+import Provider from "@/components/Provider";
+
 export default function Home() {
   return (
-    <>
+    <Provider>
       <Navbar />
       <main className="md:mt-[5.75rem]">
         <Hero />
@@ -17,6 +19,6 @@ export default function Home() {
         <GetStarted />
       </main>
       <Footer />
-    </>
+    </Provider>
   );
 }
