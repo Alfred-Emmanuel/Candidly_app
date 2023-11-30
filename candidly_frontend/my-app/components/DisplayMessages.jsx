@@ -1,7 +1,6 @@
-import { ListFilter, FileOutput } from "lucide-react";
+import { ListFilter, MoveLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-// import { revalidatePath } from "next/cache";
 import ImageModal from "./ImageModal";
 import formatTime from "@/utils/formatTime";
 import truncateWords from "@/utils/truncateWords";
@@ -45,7 +44,27 @@ function DisplayMessages({ messages, comparator }) {
 
     const handleSelectMessage = (message) => {
         setSelectedMessage(message);
-      };
+
+        if (message && !isMessageRead(message._id)) {
+          markMessageAsRead(message._id);
+        }
+    };
+
+    const markMessageAsRead = (messageId) => {
+      // Set the read status and timestamp in local storage
+      localStorage.setItem(`readStatus_${messageId}`, JSON.stringify({ read: true, timestamp: Date.now() }));
+    };
+
+    const isMessageRead = (messageId) => {
+      // Check the read status in local storage and the timestamp to determine if the message is read
+      const readStatus = localStorage.getItem(`readStatus_${messageId}`);
+      if (readStatus) {
+        const { read, timestamp } = JSON.parse(readStatus);
+        const expirationTime = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+        return read && Date.now() - timestamp < expirationTime;
+      }
+      return false;
+    };
   
     const handleMouseLeave = () => {
       setHoveredMessage(null);
@@ -70,7 +89,7 @@ function DisplayMessages({ messages, comparator }) {
                 ) : (
                   messages.sort(comparator).map((message) => (
                     <div
-                      className={`flex justify-between mb-5 cursor-pointer hover:bg-[#F4F4F4] rounded-lg p-2 ${
+                      className={`border-b-2 flex justify-between mb-5 cursor-pointer hover:bg-[#F4F4F4] rounded-lg p-2 ${
                         selectedMessage && selectedMessage._id === message._id ? 'bg-[#F4F4F4]' : ''
                       }`}
                       key={message._id}
@@ -90,7 +109,13 @@ function DisplayMessages({ messages, comparator }) {
                           <p className="text-[0.75rem] text-textColor">{truncateWords(message.content, 6)}</p>
                         </div>
                       </div>
-                      <div className=" text-textColor text-[0.65rem]">{formatTime(message.timestamp)}</div>
+                      <div className=" text-textColor text-[0.65rem] flex flex-col">{formatTime(message.timestamp)}
+                      {isMessageRead(message._id) ? (
+                        <span></span>
+                      ) : (
+                        <span className="text-white bg-primaryColor rounded-full w-[60%] flex justify-center items-center py-1">U</span>
+                      )}
+                      </div>
                     </div>
                   ))
                 )}
@@ -100,7 +125,7 @@ function DisplayMessages({ messages, comparator }) {
         </div>
         <div className={`hidden md:block md:w-[62%] shadow-lg border rounded-lg pt-5 px-5`}>
             <div className={`block md:hidden`}>
-                <FileOutput />
+                <MoveLeft />
             </div>
             <div className="flex items-center gap-[4%] md:gap-[2%]">
                 <Image src="/anonymous.png" width={50} height={50} alt="anon" />
@@ -143,7 +168,7 @@ function DisplayMessages({ messages, comparator }) {
         </div>
         <div className={`block md:hidden h-[80vh] md:w-[62%] shadow-lg border rounded-lg py-5 px-5 ${isMobileView && selectedMessage ? '' : 'hidden'}`}>
             <div className={`mb-3`}>
-                <FileOutput onClick={() => {
+                <MoveLeft onClick={() => {
                     handleSelectMessage(null);
                 }}/>
             </div>
@@ -156,12 +181,30 @@ function DisplayMessages({ messages, comparator }) {
                 <div className="">
                 <div className="border-b-2 flex items-baseline">
                     <div>
-                        <h1 className="text-[1.1rem] mb-1 md:mt-0 md:mb-0 font-semibold capitalize">{selectedMessage.header}</h1>
+                        <h1 className="text-[1.1rem] mb-2 mt-2 text-wrap md:mt-0 md:mb-0 font-semibold capitalize">{selectedMessage.header}</h1>
                     </div>
                 </div>
                 <div className="md:mt-3">
                     <p className="text-textColor leading-8">{selectedMessage.content}</p>
-                    {/* <Image src={`/anonymous.png`} width={100} height={100}/> */}
+                    {selectedMessage.images.length > 0 && (
+                        <div className="">
+                          {selectedMessage.images.map((image, index) => (
+                            <Image 
+                              key={index} 
+                              src={image} 
+                              alt={`Image ${index}`} 
+                              width={500} 
+                              height={500} 
+                              className="h-[45vh] md:h-fit-content my-5 rounded-lg border cursor-pointer hover:opacity-80"
+                              onClick={() => openModal(image)}
+                            />
+                          ))}
+                           {selectedImage && (
+                              <ImageModal isOpen={modalIsOpen} onClose={closeModal} images={[selectedImage]} />
+                            )}
+                        </div>
+                      )}
+
                 </div>
                 </div>
             ) : (

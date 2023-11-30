@@ -122,7 +122,8 @@ export async function sendMessage(formData) {
   const header = formData.get("header")?.toString();
   const content = formData.get("content")?.toString();
   const receiverId = formData.get("receiverId")?.toString();
-  const imageFile = formData.get("imageFile");
+  // const imageFile = formData.get("imageFile");
+  const imageFiles = formData.getAll("imageFile");
 
   if (!header || !content || !receiverId) throw new Error("BLANK_FIELD");
 
@@ -132,16 +133,19 @@ export async function sendMessage(formData) {
   form.append("header", header);
   form.append("content", content);
   form.append("receiverId", receiverId);
-  // if (imageFile.name === "undefined") {
+  // if (imageFile && imageFile.type.startsWith("image/")) {
   //   form.append("imageFile", imageFile);
   // }
-  if (imageFile && imageFile.type.startsWith("image/")) {
-    form.append("imageFile", imageFile);
+  for (let i = 0; i < imageFiles.length; i++) {
+    const file = imageFiles[i];
+    if (file.type.startsWith("image/")) {
+      form.append("imageFile", file);
+    }
   }
   
 
-  console.log(imageFile.name)
-  console.log(form)
+  console.log(imageFiles)
+  // console.log(form)
 
 
   try {
@@ -150,9 +154,6 @@ export async function sendMessage(formData) {
         `${process.env.PRODUCTION_ENDPOINT}/api/messages/send-message/${header}`, {
       method: "POST",
       body: form,
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
     });
     if (response.ok) {
       return { success: true };

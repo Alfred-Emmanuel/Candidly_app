@@ -41,3 +41,16 @@ export const SubmitEmail = () => {
     );
 }
 
+export const SendMessage = () => {
+    const {pending} = useFormStatus();
+    return (
+    <button className="flex justify-center items-center bg-[#000080] w-full px-3 h-12 rounded-lg text-white font-semibold">
+        {pending ? (
+        <div className="animate-spin rounded-full h-7 w-7 border-t-4 border-b-4 border-white"></div>
+        ) : (
+        "Send Message"
+        )}
+    </button>
+    );
+}
+

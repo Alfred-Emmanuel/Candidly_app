@@ -1,6 +1,7 @@
-import {useEffect} from 'react';
+import { useEffect,useState } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
+import Loading from '@/app/loading';
 
 const customStyles = {
   content: {
@@ -10,13 +11,24 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '80%',
+    maxWidth: '90%',
+    maxHeight: '95vh',  
+    overflow: 'hidden'
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    zIndex: 999, 
   },
 };
 
-Modal.setAppElement('#__next'); // Set the root element for accessibility
+Modal.setAppElement('#__next'); 
 
 const ImageModal = ({ isOpen, onClose, images }) => {
+  const [loading, setLoading] = useState(true);
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
     useEffect(() => {
         const body = document.body;
         
@@ -33,9 +45,22 @@ const ImageModal = ({ isOpen, onClose, images }) => {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
-      <div className="modal-content">
+      <div className="modal-content flex items-center justify-center">
         {images.map((image, index) => (
-          <Image key={index} src={image} alt={`Image ${index}`} className="modal-image" width={1000} height={1000} />
+          <>
+            <div key={index} className={`relative flex items-center  ${loading ? 'block' : 'hidden'}`}>
+              <Loading />
+            </div>        
+            <Image
+              key={index} 
+              src={image} 
+              alt={`Image ${index}`} 
+              className={`md:object-contain max-h-[85vh] w-full ${loading ? 'hidden' : 'block'}`}
+              width={1000} 
+              height={100} 
+              onLoad={handleImageLoad}
+              />
+          </>
         ))}
       </div>
       <div className='flex justify-end'>

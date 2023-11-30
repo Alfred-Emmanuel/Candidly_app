@@ -1,10 +1,27 @@
 "use client";
 import { sendMessage as submitForm } from "@/actions/actions";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
-
+import { Image } from "lucide-react";
+import { useState } from "react";
+import { SendMessage as Button } from "./Button";
 
 const MessageForm = (userId) => {
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+
+    if (files.length > 5) {
+      toast.error('You can upload a maximum of 5 files.');
+      return;
+    }
+
+    setSelectedFiles(files);
+  };
+
+  const handleIconClick = () => {
+    document.getElementById('fileInput').click();
+  };
 
   async function clientAction(formData) {
     try {
@@ -17,6 +34,7 @@ const MessageForm = (userId) => {
         return;
       } else if (result?.success) {
         toast.success("Message sent successfully");
+        setSelectedFiles([]);
         document.getElementById("myForm").reset();
       }
     } catch (error) {
@@ -48,13 +66,18 @@ const MessageForm = (userId) => {
             name="header"
           />
         </div>
-        <div className="">
+        <div className="mt-4">
+          {/* Hidden file input */}
           <input
             type="file"
-            // required
-            className="w-full h-12 bg-gray-50 border border-black  px-5 rounded-lg "
+            onChange={handleFileChange}
+            // style={{ display: 'none' }}
+            className="w-full h-12 bg-gray-50 border border-black  px-5 rounded-lg hidden "
+            id="fileInput"
             name="imageFile"
+            multiple
           />
+          {/* Display selected file names */}
         </div>
         <div className="mt-4 md:mt-10 lg:mt-4">
           <h1 className="md:mb-3 mb-2 text-[1.1rem] md:text-[1.2rem lg:text-[1rem]">Type your anonymous message <span className="text-red-500">*</span></h1>
@@ -64,12 +87,30 @@ const MessageForm = (userId) => {
             name="content"
           />
         </div>
+        {selectedFiles.length > 0 && (
+            <div className="mt-2 px-2 py-2 rounded-lg border pb-4 mb-2">
+              <h1 className="text-[1.2rem] mb-2">Selected Files:</h1>
+              <ul className="">
+                {selectedFiles.map((file, index) => (
+                  <li key={index} className="border text-wrap px-5 rounded-lg bg-gray-50 mb-2 py-1">{file.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         <div>
             <input type="hidden" name="receiverId" value={userId.userId.org_message} />
         </div>
-        <button className="bg-[#000080] w-full mt-5 h-12 rounded-lg text-white font-semibold">
-          Send Message
-        </button>
+        <div className="flex items-center justify-end gap-[2%]">
+          <div
+            className="cursor-pointer"
+            onClick={handleIconClick}
+          >
+            <span role="img" aria-label="Image Upload">
+              <Image size="2rem" />
+            </span>
+          </div>
+          <Button />
+        </div>
       </form>
     </>
   );
