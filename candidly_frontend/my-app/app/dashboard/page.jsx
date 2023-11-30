@@ -15,7 +15,7 @@ import { io } from "socket.io-client";
 import { getMessages } from "@/actions/actions";
 import { useRouter } from "next/navigation";
 
-const socket = io("http://localhost:3000");
+// const socket = io("http://localhost:3000");
 
 function Page() {
   const { data: session, status } = useSession();
@@ -38,8 +38,6 @@ function Page() {
   }
 
   if (status === 'unauthenticated') {
-    // Loading state, you can show a loading spinner or other UI
-    // return <div>Loading...</div>;
     router.push("/login");
     toast.error("You need to login first");
   }

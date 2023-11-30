@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import Image from 'next/image';
 import Loading from '@/app/loading';
@@ -12,24 +12,19 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     maxWidth: '90%',
-    maxHeight: '95vh',  
-    overflow: 'hidden'
+    maxHeight: '95vh',
+    overflow: 'hidden',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    zIndex: 999, 
+    zIndex: 999,
   },
 };
 
-Modal.setAppElement('#__next'); 
+Modal.setAppElement('#__next');
 
 const ImageModal = ({ isOpen, onClose, images }) => {
-  const [loading, setLoading] = useState(true);
-  const handleImageLoad = () => {
-    setLoading(false);
-  };
-
-    useEffect(() => {
+      useEffect(() => {
         const body = document.body;
         
         if (isOpen) {
@@ -47,20 +42,16 @@ const ImageModal = ({ isOpen, onClose, images }) => {
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
       <div className="modal-content flex items-center justify-center">
         {images.map((image, index) => (
-          <>
-            <div key={index} className={`relative flex items-center  ${loading ? 'block' : 'hidden'}`}>
-              <Loading />
-            </div>        
+          <div key={index} className="">
             <Image
-              key={index} 
-              src={image} 
-              alt={`Image ${index}`} 
-              className={`md:object-contain max-h-[85vh] w-full ${loading ? 'hidden' : 'block'}`}
-              width={1000} 
-              height={100} 
-              onLoad={handleImageLoad}
-              />
-          </>
+              key={index + 1}
+              src={image}
+              alt={`Image ${index}`}
+              className={`md:object-contain max-h-[85vh] w-full`}
+              width={1000}
+              height={100}
+            />
+          </div>
         ))}
       </div>
       <div className='flex justify-end'>
@@ -71,3 +62,4 @@ const ImageModal = ({ isOpen, onClose, images }) => {
 };
 
 export default ImageModal;
+

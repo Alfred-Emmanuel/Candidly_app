@@ -195,7 +195,7 @@ function DisplayMessages({ messages, comparator }) {
                               alt={`Image ${index}`} 
                               width={500} 
                               height={500} 
-                              className="h-[45vh] md:h-fit-content my-5 rounded-lg border cursor-pointer hover:opacity-80"
+                              className="h-[50vh] md:h-fit-content my-5 rounded-lg border cursor-pointer hover:opacity-80"
                               onClick={() => openModal(image)}
                             />
                           ))}
