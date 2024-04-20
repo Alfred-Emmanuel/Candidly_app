@@ -12,7 +12,7 @@ This is a multiple page Next.Js 13.5 app written with tailwind CSS that allows i
 
 ### Dependencies
 1. Create a .env file directly inside the `candidly_frontend/my-app` folder
-2. You need to understand how [NEXT AUTH](https://next-auth.js.org/){:target="_blank" rel="noopener"} works. 
+2. You need to understand how [NEXT AUTH](https://next-auth.js.org/) works. 
 2. The needed variables inside the .env file are as follows: 
     - `PRODUCTION_ENDPOINT` (This is the endpoint to your backend either hosted on a platform like render, heroku or locally (for development))
     - `NEXTAUTH_URL` (This is the url to your client (frontend) either hosted on a platform like vercel, netlify or locally (for development))
@@ -27,8 +27,8 @@ This is a multiple page Next.Js 13.5 app written with tailwind CSS that allows i
 This is a nodejs express web server that listens for calls which could originate from various parts of the application such as creating a new user, updating an existing user details, sending a new message, logging in e.t.c
 
 ### Dependencies
-1. You need to have an account on [AWS](https://aws.amazon.com/pm/serv-s3/){:target="_blank" rel="noopener"} S3.
-2. You need to understand how [JWT](https://jwt.io/introduction){:target="_blank" rel="noopener"} works.
+1. You need to have an account on [AWS](https://aws.amazon.com/pm/serv-s3/) S3.
+2. You need to understand how [JWT](https://jwt.io/introduction) works.
 3. You need to have mongodb set up on your machine and understand how it works.
 3. Create a .env file directly inside `candidly_backend` folder
 4. The needed variables inside the .env file are as follows: 
